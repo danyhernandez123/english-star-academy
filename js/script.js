@@ -1,21 +1,3 @@
-const maintenanceMode = true;
-
-if (maintenanceMode) {
-
-  document.body.innerHTML = `
-    <div class="maintenance-screen">
-      <h1>English Star Academy</h1>
-      <h2>Platform Under Maintenance</h2>
-      <p>
-        We are improving the platform.
-        Please come back later.
-      </p>
-    </div>
-  `;
-
-  throw new Error("Maintenance Mode");
-
-}
 
 const lessons = a0Lessons;
 
