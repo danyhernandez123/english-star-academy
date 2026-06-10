@@ -2672,3 +2672,378 @@ body {
   color: #94a3b8;
   font-weight: 700;
 }
+
+/* MOBILE RESPONSIVE FIX */
+
+@media (max-width: 768px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .app {
+    display: block !important;
+    width: 100%;
+    max-width: 100%;
+    padding: 14px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    border-radius: 22px;
+    padding: 22px;
+  }
+
+  .logo {
+    width: 100%;
+  }
+
+  .logo h1 {
+    font-size: 24px;
+  }
+
+  .logo p {
+    font-size: 14px;
+  }
+
+  .header-profile {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .sidebar {
+    position: relative !important;
+    top: 0;
+    width: 100%;
+    min-height: auto;
+    margin: 16px 0;
+    border-radius: 22px;
+    padding: 16px;
+  }
+
+  .sidebar-brand {
+    display: none;
+  }
+
+  .sidebar-student {
+    display: none;
+  }
+
+  .sidebar-menu {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .sidebar-menu button {
+    text-align: center;
+    padding: 12px;
+    font-size: 13px;
+  }
+
+  .dashboard-pro,
+  .content,
+  .vocabulary-section,
+  .grammar-section,
+  .listening-section,
+  .speaking-section,
+  .reading-section,
+  .writing-section,
+  .exam-section,
+  .achievements,
+  .level-roadmap,
+  .certificate-section,
+  #midtermSection {
+    grid-column: auto !important;
+    width: 100%;
+    padding: 20px;
+    border-radius: 22px;
+  }
+
+  .hero-banner {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-content {
+    padding: 24px;
+  }
+
+  .hero-content h2 {
+    font-size: 28px;
+  }
+
+  .hero-content p {
+    font-size: 15px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .hero-btn-primary,
+  .hero-btn-secondary {
+    width: 100%;
+  }
+
+  .hero-character {
+    padding: 24px;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .dash-card {
+    padding: 20px;
+  }
+
+  .dash-card span {
+    font-size: 34px;
+  }
+
+  .dashboard-bottom {
+    grid-template-columns: 1fr;
+  }
+
+  .content {
+    grid-template-columns: 1fr;
+  }
+
+  .lesson-card-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .status-pill {
+    margin-top: 8px;
+  }
+
+  .roadmap-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vocabulary-categories {
+    grid-template-columns: 1fr;
+  }
+
+  .vocabulary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .exam-card {
+    padding: 20px;
+  }
+
+  input,
+  button {
+    max-width: 100%;
+  }
+}
+/* MOBILE POLISH */
+
+@media (max-width: 768px) {
+
+  .app {
+    padding: 10px;
+  }
+
+  .header {
+    padding: 18px;
+    gap: 16px;
+  }
+
+  .logo {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .logo-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 20px;
+    font-size: 28px;
+  }
+
+  .logo h1 {
+    font-size: 25px;
+    line-height: 1.1;
+  }
+
+  .header-profile {
+    padding: 14px;
+    border-radius: 22px;
+    gap: 14px;
+  }
+
+  .profile-avatar {
+    width: 56px;
+    height: 56px;
+    font-size: 24px;
+  }
+
+  .reset-btn {
+    padding: 12px 18px;
+  }
+
+  .sidebar {
+    padding: 14px;
+  }
+
+  .sidebar-menu {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .sidebar-menu button {
+    font-size: 12px;
+    padding: 11px 8px;
+    border-radius: 14px;
+  }
+
+  .dashboard-pro,
+  .content,
+  .vocabulary-section,
+  .grammar-section,
+  .listening-section,
+  .speaking-section,
+  .reading-section,
+  .writing-section,
+  .exam-section,
+  #midtermSection {
+    padding: 16px;
+  }
+
+  .hero-banner {
+    gap: 14px;
+  }
+
+  .hero-content h2 {
+    font-size: 24px;
+  }
+
+  .hero-character {
+    display: none;
+  }
+
+  .dashboard-grid {
+    gap: 12px;
+  }
+
+  .dash-card {
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  .module-box {
+    padding: 18px;
+    border-radius: 22px;
+  }
+
+  .module-header {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .module-header h3 {
+    font-size: 20px;
+  }
+
+  .module-number {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    font-size: 18px;
+  }
+
+  .lesson-card-content {
+    padding: 16px;
+  }
+}
+/* MOBILE FINAL POLISH */
+
+@media (max-width: 768px) {
+
+  .header {
+    margin-bottom: 14px;
+  }
+
+  .header-profile {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+  }
+
+  .reset-btn {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+  }
+
+  .sidebar {
+    margin: 10px 0 16px;
+  }
+
+  .sidebar-menu {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .sidebar-menu button {
+    min-height: 44px;
+  }
+
+  .vocabulary-section,
+  .dashboard-pro,
+  .content {
+    margin-top: 0;
+  }
+
+  .vocabulary-section h2,
+  .dashboard-pro h2,
+  .content h2 {
+    font-size: 26px;
+  }
+}
+@media (max-width: 768px) {
+  .sidebar-menu button:nth-last-child(1),
+  .sidebar-menu button:nth-last-child(2),
+  .sidebar-menu button:nth-last-child(3) {
+    display: none;
+  }
+}
+/* MOBILE BOTTOM NAV */
+
+@media (max-width: 768px) {
+
+  body {
+    padding-bottom: 82px;
+  }
+
+  .sidebar {
+    position: sticky !important;
+    bottom: 0;
+    z-index: 999;
+    margin: 0;
+    border-radius: 22px 22px 0 0;
+    padding: 10px;
+    box-shadow: 0 -12px 30px rgba(15, 23, 42, 0.12);
+  }
+
+  .sidebar-menu {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+  }
+
+  .sidebar-menu button {
+    font-size: 11px;
+    padding: 10px 4px;
+    min-height: 44px;
+    border-radius: 14px;
+  }
+
+  .sidebar-menu button:nth-child(n+6) {
+    display: none;
+  }
+}
