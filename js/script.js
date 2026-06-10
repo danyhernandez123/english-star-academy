@@ -1501,12 +1501,21 @@ function showTab(sectionId, buttonElement = null) {
 function toggleMobileMenu() {
   const menu = document.querySelector(".sidebar-menu");
   const moreBtn = document.querySelector(".more-btn");
+  const buttons = menu.querySelectorAll("button");
 
   menu.classList.toggle("expanded");
 
-  if (menu.classList.contains("expanded")) {
-    moreBtn.textContent = "More ▲";
-  } else {
-    moreBtn.textContent = "More ▼";
-  }
+  const expanded = menu.classList.contains("expanded");
+
+  buttons.forEach((button, index) => {
+    if (index >= 5 && !button.classList.contains("more-btn")) {
+      button.style.setProperty(
+        "display",
+        expanded ? "block" : "none",
+        "important"
+      );
+    }
+  });
+
+  moreBtn.textContent = expanded ? "More ▲" : "More ▼";
 }
