@@ -1498,3 +1498,15 @@ function showTab(sectionId, buttonElement = null) {
     buttonElement.classList.add("active");
   }
 }
+function toggleMobileMenu() {
+  const menu = document.querySelector(".sidebar-menu");
+  const moreBtn = document.querySelector(".more-btn");
+
+  menu.classList.toggle("expanded");
+
+  if (menu.classList.contains("expanded")) {
+    moreBtn.textContent = "More ▲";
+  } else {
+    moreBtn.textContent = "More ▼";
+  }
+}
