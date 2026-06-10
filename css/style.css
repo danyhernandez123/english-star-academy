@@ -2614,3 +2614,28 @@ body {
 .primary-btn:hover {
   opacity: .9;
 }
+
+.maintenance-screen{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:40px;
+}
+
+.maintenance-screen h1{
+    font-size:48px;
+    margin-bottom:15px;
+}
+
+.maintenance-screen h2{
+    color:#2563eb;
+    margin-bottom:15px;
+}
+
+.maintenance-screen p{
+    font-size:18px;
+    color:#64748b;
+}
