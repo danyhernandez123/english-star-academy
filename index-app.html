@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,494 +10,514 @@
 
 <body>
 
-<div class="app">
+  <div class="app">
 
-  <header class="header premium-header">
-    <div class="logo">
-      <div class="logo-icon">D</div>
-      <div>
-        <h1>English Star Academy</h1>
-        <p>Learn English. Shine Everywhere.</p>
+    <header class="header premium-header">
+      <div class="logo">
+        <div class="logo-icon">D</div>
+        <div>
+          <h1>English Star Academy</h1>
+          <p>Learn English. Shine Everywhere.</p>
+        </div>
       </div>
+
+      <div class="header-profile">
+        <div class="header-avatar">D</div>
+        <div class="header-info">
+          <h3 id="headerName">Student</h3>
+          <p>
+            Level <span id="headerLevel">1</span> ·
+            <span id="headerXp">0</span> XP ·
+            <span id="headerStreak">1</span> day streak
+          </p>
+        </div>
+
+        <button class="reset-btn" onclick="resetProgress()">Reset</button>
+      </div>
+    </header>
+
+    <aside class="sidebar hidden" id="mainNav">
+      <div class="sidebar-student">
+
+        <div class="student-avatar">
+          D
+        </div>
+
+        <div class="student-data">
+          <h3 id="sidebarStudentName">
+            Student
+          </h3>
+
+          <p>
+            Level
+            <span id="sidebarLevel">1</span>
+          </p>
+
+          <p>
+            <span id="sidebarXp">0</span>
+            XP
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="sidebar-menu">
+        <button class="nav-item active" onclick="showTab('dashboard', this)">Dashboard</button>
+        <button class="nav-item" onclick="showTab('mainContent', this)">Courses</button>
+        <button class="nav-item" onclick="showTab('vocabularySection', this)">Vocabulary</button>
+        <button class="nav-item" onclick="showTab('grammarSection', this)">Grammar</button>
+        <button class="nav-item" onclick="showTab('listeningSection', this)">Listening</button>
+        <button class="nav-item" onclick="showTab('speakingSection', this)">Speaking</button>
+        <button class="nav-item" onclick="showTab('readingSection', this)">Reading</button>
+        <button class="nav-item" onclick="showTab('writingSection', this)">Writing</button>
+        <button class="nav-item" onclick="showTab('midtermSection', this)">Midterm Exam</button>
+        <button class="nav-item" onclick="showTab('examSection', this)">Final Exam</button>
+        <button class="nav-item" onclick="showTab('achievementsSection', this)">Achievements</button>
+        <button class="nav-item" onclick="showTab('roadmapSection', this)">Roadmap</button>
+        <button class="nav-item" onclick="showTab('certificateSection', this)">Certificate</button>
+        <button class="nav-item more-btn" onclick="toggleMobileMenu()">More ▼</button>
+      </div>
+    </aside>
+
+    <section class="welcome-card" id="welcomeCard">
+      <h2>Welcome to English Star Academy</h2>
+      <p>Antes de empezar, crea tu perfil de estudiante.</p>
+
+      <input type="text" id="studentName" placeholder="Escribe tu nombre">
+
+      <div class="profile-options">
+        <button onclick="createProfile('Kids')">Kids</button>
+        <button onclick="createProfile('Teens')">Teens</button>
+        <button onclick="createProfile('Adults')">Adults</button>
+      </div>
+    </section>
+
+    <section class="dashboard-pro hidden tab-section active" id="dashboard">
+      <div class="hero-banner">
+        <div class="hero-content">
+          <span class="hero-badge">English Star Premium</span>
+
+          <h2>
+            Welcome back,
+            <span id="heroStudentName">Student</span>
+          </h2>
+
+          <p>
+            Continue your English journey and unlock the next level today.
+          </p>
+
+          <div class="hero-buttons">
+            <button class="hero-btn-primary" onclick="showTab('mainContent')">
+              Continue Learning
+            </button>
+
+            <button class="hero-btn-secondary" onclick="showTab('examSection')">
+              Final Exam A0
+            </button>
+          </div>
+        </div>
+
+        <div class="hero-course-card">
+
+          <span class="course-tag">
+            Current Course
+          </span>
+
+          <h3>A0</h3>
+
+          <p class="course-level">
+            Absolute Beginner
+          </p>
+
+          <div class="course-info">
+            <div>
+              <strong>10</strong>
+              <span>Lessons</span>
+            </div>
+
+            <div>
+              <strong id="courseProgress">0%</strong>
+              <span>Progress</span>
+            </div>
+          </div>
+
+          <div class="course-bar">
+            <div id="courseBarFill"></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="dashboard-grid">
+        <div class="dash-card">
+          <span id="xp">0</span>
+          <p>XP Total</p>
+        </div>
+
+        <div class="dash-card">
+          <span id="studentLevel">1</span>
+          <p>Student Level</p>
+        </div>
+
+        <div class="dash-card xp-card">
+          <span id="xpToNext">0 / 100</span>
+          <p>XP to next level</p>
+          <div class="mini-xp-bar">
+            <div id="miniXpFill"></div>
+          </div>
+        </div>
+
+        <div class="dash-card">
+          <span id="progress">0%</span>
+          <p>A0 Progress</p>
+        </div>
+
+        <div class="dash-card">
+          <span id="medals">0</span>
+          <p>Achievements</p>
+        </div>
+
+        <div class="dash-card">
+          <span id="streak">1</span>
+          <p>Day Streak</p>
+        </div>
+      </div>
+      <div class="dashboard-bottom">
+
+        <div class="next-lesson-card">
+          <span class="section-label">Next Lesson</span>
+          <h3 id="nextLessonTitle">Unit 1: Greetings & Farewells</h3>
+          <p id="nextLessonObjective">
+            Aprender a saludar y despedirse en inglés.
+          </p>
+
+          <button onclick="openNextLesson()">
+            Start Lesson
+          </button>
+        </div>
+
+        <div class="activity-card">
+          <span class="section-label">Recent Activity</span>
+          <h3 id="activityTitle">No activity yet</h3>
+          <p id="activityText">
+            Complete your first lesson to see your progress here.
+          </p>
+        </div>
+
+      </div>
+      <button class="continue-btn" onclick="openNextLesson()">
+        Continue Lesson
+      </button>
+    </section>
+
+    <main class="content hidden tab-section" id="mainContent">
+      <section class="lessons" id="lessonList"></section>
+
+      <section class="lesson-view" id="lessonView">
+        <h2>Selecciona una unidad</h2>
+        <p>Comienza con la primera unidad del Nivel A0.</p>
+      </section>
+    </main>
+
+    <h2>Vocabulary Lab</h2>
+    <p>Study essential A0 words organized by category.</p>
+
+    <div class="vocabulary-categories" id="vocabularyCategories"></div>
+
+    <div class="flashcard" id="flashcard">
+      <h3 id="flashEnglish">Hello</h3>
+      <p id="flashSpanish" class="hidden">Hola</p>
     </div>
 
-    <div class="header-profile">
-      <div class="header-avatar">D</div>
-      <div class="header-info">
-        <h3 id="headerName">Student</h3>
-        <p>
-          Level <span id="headerLevel">1</span> ·
-          <span id="headerXp">0</span> XP ·
-          <span id="headerStreak">1</span> day streak
+    <div class="flash-actions">
+      <button onclick="showMeaning()">Show meaning</button>
+      <button onclick="nextWord()">Next word</button>
+      <button onclick="speak(currentWord.english)">Listen</button>
+    </div>
+
+    <section class="grammar-section hidden tab-section" id="grammarSection">
+      <h2>Grammar Lab</h2>
+      <p>Estudia la gramática básica del Nivel A0 con ejemplos claros.</p>
+
+      <div class="grammar-card">
+        <h3 id="grammarUnit">Unit 1</h3>
+        <h2 id="grammarTopic">Greetings</h2>
+        <div id="grammarExamples"></div>
+
+        <button class="grammar-btn" onclick="playGrammarExample()">
+          Escuchar ejemplo
+        </button>
+
+        <button class="grammar-btn" onclick="nextGrammar()">
+          Siguiente gramática
+        </button>
+      </div>
+    </section>
+
+    <section class="listening-section hidden tab-section" id="listeningSection">
+      <h2>Listening Lab</h2>
+      <p>Escucha mini conversaciones y responde preguntas.</p>
+
+      <div class="listening-card">
+        <h3 id="listeningTitle">Listening 1</h3>
+        <p id="listeningProgress" class="listening-progress">
+          1 / 25
         </p>
+        <p class="listening-script" id="listeningText">
+          Hello. My name is Tom.
+        </p>
+
+        <button class="listen-btn" onclick="playListening()">
+          Escuchar audio
+        </button>
+        <button class="listen-btn" onclick="nextListening()">
+          Next Listening
+        </button>
+
+        <div class="listening-quiz">
+          <h3 id="listeningQuestion">What is his name?</h3>
+          <div id="listeningOptions"></div>
+          <p id="listeningResult" class="result"></p>
+        </div>
       </div>
+    </section>
 
-      <button class="reset-btn" onclick="resetProgress()">Reset</button>
-    </div>
-  </header>
+    <section class="speaking-section hidden tab-section" id="speakingSection">
+      <h2>Speaking Lab</h2>
+      <p>Practica tu pronunciación.</p>
 
-  <aside class="sidebar hidden" id="mainNav">
-    <div class="sidebar-student">
+      <div class="speaking-card">
+        <h3>Pronuncia:</h3>
 
-  <div class="student-avatar">
-    D
-  </div>
-
-  <div class="student-data">
-    <h3 id="sidebarStudentName">
-      Student
-    </h3>
-
-    <p>
-      Level
-      <span id="sidebarLevel">1</span>
-    </p>
-
-    <p>
-      <span id="sidebarXp">0</span>
-      XP
-    </p>
-
-  </div>
-
-</div>
-
-    <div class="sidebar-menu">
-      <button class="nav-item active" onclick="showTab('dashboard', this)">Dashboard</button>
-<button class="nav-item" onclick="showTab('mainContent', this)">Courses</button>
-<button class="nav-item" onclick="showTab('vocabularySection', this)">Vocabulary</button>
-<button class="nav-item" onclick="showTab('grammarSection', this)">Grammar</button>
-<button class="nav-item" onclick="showTab('listeningSection', this)">Listening</button>
-<button class="nav-item" onclick="showTab('speakingSection', this)">Speaking</button>
-<button class="nav-item" onclick="showTab('readingSection', this)">Reading</button>
-<button class="nav-item" onclick="showTab('writingSection', this)">Writing</button>
-<button class="nav-item" onclick="showTab('midtermSection', this)">Midterm Exam</button>
-<button class="nav-item" onclick="showTab('examSection', this)">Final Exam</button>
-<button class="nav-item" onclick="showTab('achievementsSection', this)">Achievements</button>
-<button class="nav-item" onclick="showTab('roadmapSection', this)">Roadmap</button>
-<button class="nav-item" onclick="showTab('certificateSection', this)">Certificate</button>
-<button class="nav-item more-btn" onclick="toggleMobileMenu()">More ▼</button>
-    </div>
-  </aside>
-
-  <section class="welcome-card" id="welcomeCard">
-    <h2>Welcome to English Star Academy</h2>
-    <p>Antes de empezar, crea tu perfil de estudiante.</p>
-
-    <input type="text" id="studentName" placeholder="Escribe tu nombre">
-
-    <div class="profile-options">
-      <button onclick="createProfile('Kids')">Kids</button>
-      <button onclick="createProfile('Teens')">Teens</button>
-      <button onclick="createProfile('Adults')">Adults</button>
-    </div>
-  </section>
-
-  <section class="dashboard-pro hidden tab-section active" id="dashboard">
-    <div class="hero-banner">
-      <div class="hero-content">
-        <span class="hero-badge">English Star Premium</span>
-
-        <h2>
-          Welcome back,
-          <span id="heroStudentName">Student</span>
+        <h2 id="speakingPhrase">
+          Hello, my name is Tom.
         </h2>
 
-        <p>
-          Continue your English journey and unlock the next level today.
+        <button onclick="startSpeaking()">
+          Iniciar micrófono
+        </button>
+
+        <p id="speechResult">
+          Presiona el botón para comenzar.
+        </p>
+      </div>
+    </section>
+
+    <section class="reading-section hidden tab-section" id="readingSection">
+      <h2>Reading Lab</h2>
+      <p>Lee textos cortos y responde preguntas de comprensión.</p>
+
+      <div class="reading-card">
+        <h3 id="readingTitle">Reading 1</h3>
+
+        <p class="reading-text" id="readingText">
+          Hello. My name is Anna. I am a student.
         </p>
 
-        <div class="hero-buttons">
-          <button class="hero-btn-primary" onclick="showTab('mainContent')">
-            Continue Learning
-          </button>
-
-          <button class="hero-btn-secondary" onclick="showTab('examSection')">
-            Final Exam A0
-          </button>
-        </div>
+        <h3 id="readingQuestion">What is her name?</h3>
+        <div id="readingOptions"></div>
+        <p id="readingResult" class="result"></p>
       </div>
-
-      <div class="hero-course-card">
-
-  <span class="course-tag">
-    Current Course
-  </span>
-
-  <h3>A0</h3>
-
-  <p class="course-level">
-    Absolute Beginner
-  </p>
-
-  <div class="course-info">
-    <div>
-      <strong>10</strong>
-      <span>Lessons</span>
-    </div>
-
-    <div>
-      <strong id="courseProgress">0%</strong>
-      <span>Progress</span>
-    </div>
-  </div>
-
-  <div class="course-bar">
-    <div id="courseBarFill"></div>
-  </div>
-
-</div>
-    </div>
-
-    <div class="dashboard-grid">
-      <div class="dash-card">
-        <span id="xp">0</span>
-        <p>XP Total</p>
-      </div>
-
-      <div class="dash-card">
-        <span id="studentLevel">1</span>
-        <p>Student Level</p>
-      </div>
-
-      <div class="dash-card xp-card">
-        <span id="xpToNext">0 / 100</span>
-        <p>XP to next level</p>
-        <div class="mini-xp-bar">
-          <div id="miniXpFill"></div>
-        </div>
-      </div>
-
-      <div class="dash-card">
-        <span id="progress">0%</span>
-        <p>A0 Progress</p>
-      </div>
-
-      <div class="dash-card">
-        <span id="medals">0</span>
-        <p>Achievements</p>
-      </div>
-
-      <div class="dash-card">
-        <span id="streak">1</span>
-        <p>Day Streak</p>
-      </div>
-    </div>
-<div class="dashboard-bottom">
-
-  <div class="next-lesson-card">
-    <span class="section-label">Next Lesson</span>
-    <h3 id="nextLessonTitle">Unit 1: Greetings & Farewells</h3>
-    <p id="nextLessonObjective">
-      Aprender a saludar y despedirse en inglés.
-    </p>
-
-    <button onclick="openNextLesson()">
-      Start Lesson
-    </button>
-  </div>
-
-  <div class="activity-card">
-    <span class="section-label">Recent Activity</span>
-    <h3 id="activityTitle">No activity yet</h3>
-    <p id="activityText">
-      Complete your first lesson to see your progress here.
-    </p>
-  </div>
-
-</div>
-    <button class="continue-btn" onclick="openNextLesson()">
-      Continue Lesson
-    </button>
-  </section>
-
-  <main class="content hidden tab-section" id="mainContent">
-    <section class="lessons" id="lessonList"></section>
-
-    <section class="lesson-view" id="lessonView">
-      <h2>Selecciona una unidad</h2>
-      <p>Comienza con la primera unidad del Nivel A0.</p>
     </section>
-  </main>
 
-  <h2>Vocabulary Lab</h2>
-<p>Study essential A0 words organized by category.</p>
+    <section class="writing-section hidden tab-section" id="writingSection">
+      <h2>Writing Lab</h2>
+      <p>Practica escritura con ejercicios guiados.</p>
 
-<div class="vocabulary-categories" id="vocabularyCategories"></div>
+      <div class="writing-card">
+        <h3 id="writingTitle">Writing 1</h3>
 
-<div class="flashcard" id="flashcard">
-  <h3 id="flashEnglish">Hello</h3>
-  <p id="flashSpanish" class="hidden">Hola</p>
-</div>
+        <p id="writingPrompt">
+          Complete: _____ morning.
+        </p>
 
-<div class="flash-actions">
-  <button onclick="showMeaning()">Show meaning</button>
-  <button onclick="nextWord()">Next word</button>
-  <button onclick="speak(currentWord.english)">Listen</button>
-</div>
+        <input type="text" id="writingInput" placeholder="Escribe tu respuesta aquí">
 
-  <section class="grammar-section hidden tab-section" id="grammarSection">
-    <h2>Grammar Lab</h2>
-    <p>Estudia la gramática básica del Nivel A0 con ejemplos claros.</p>
+        <button class="writing-btn" onclick="checkWritingAnswer()">
+          Verificar
+        </button>
 
-    <div class="grammar-card">
-      <h3 id="grammarUnit">Unit 1</h3>
-      <h2 id="grammarTopic">Greetings</h2>
-      <div id="grammarExamples"></div>
-
-      <button class="grammar-btn" onclick="playGrammarExample()">
-        Escuchar ejemplo
-      </button>
-
-      <button class="grammar-btn" onclick="nextGrammar()">
-        Siguiente gramática
-      </button>
-    </div>
-  </section>
-
-  <section class="listening-section hidden tab-section" id="listeningSection">
-    <h2>Listening Lab</h2>
-    <p>Escucha mini conversaciones y responde preguntas.</p>
-
-    <div class="listening-card">
-      <h3 id="listeningTitle">Listening 1</h3>
-      <p class="listening-script" id="listeningText">
-        Hello. My name is Tom.
-      </p>
-
-      <button class="listen-btn" onclick="playListening()">
-        Escuchar audio
-      </button>
-
-      <div class="listening-quiz">
-        <h3 id="listeningQuestion">What is his name?</h3>
-        <div id="listeningOptions"></div>
-        <p id="listeningResult" class="result"></p>
+        <p id="writingResult" class="result"></p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="speaking-section hidden tab-section" id="speakingSection">
-    <h2>Speaking Lab</h2>
-    <p>Practica tu pronunciación.</p>
+    <section class="tab-section hidden" id="midtermSection">
 
-    <div class="speaking-card">
-      <h3>Pronuncia:</h3>
+      <div class="section-header">
+        <h2>Midterm Exam A0</h2>
+        <p>
+          Evaluate Units 1–7.
+        </p>
+      </div>
 
-      <h2 id="speakingPhrase">
-        Hello, my name is Tom.
-      </h2>
+      <div id="midtermContainer"></div>
+      <div class="midterm-summary">
+        <button class="primary-btn" onclick="finishMidterm()">
+          Finish Midterm
+        </button>
 
-      <button onclick="startSpeaking()">
-        Iniciar micrófono
+        <h3 id="midtermFinalResult"></h3>
+      </div>
+      <div class="midterm-summary">
+
+        <button class="primary-btn" onclick="finishMidterm()">
+
+          Finish Midterm
+
+        </button>
+
+        <h3 id="midtermFinalResult"></h3>
+
+      </div>
+
+    </section>
+
+    <section class="exam-section hidden tab-section" id="examSection">
+      <h2>Final Exam A0</h2>
+      <p>Demuestra que dominas el nivel A0.</p>
+
+      <div class="exam-card">
+        <h3 id="examSkill">Vocabulary</h3>
+
+        <p id="examQuestion">
+          What does "Hello" mean?
+        </p>
+
+        <div id="examOptions"></div>
+
+        <input type="text" id="examInput" class="hidden" placeholder="Escribe tu respuesta aquí">
+
+        <button class="exam-btn hidden" id="examCheckBtn" onclick="checkExamInput()">
+          Verificar
+        </button>
+
+        <p id="examResult" class="result"></p>
+
+        <button class="exam-btn" onclick="nextExamQuestion()">
+          Siguiente pregunta
+        </button>
+      </div>
+
+      <div class="exam-score" id="examScoreBox">
+        Score: 0 / 0
+      </div>
+    </section>
+
+    <section class="achievements hidden tab-section" id="achievementsSection">
+      <h2>Achievements</h2>
+      <p>Tus recompensas aparecerán aquí mientras avanzas.</p>
+
+      <div class="medal-list" id="medalList">
+        <div class="empty-medals">
+          Todavía no tienes logros. Completa tu primera unidad.
+        </div>
+      </div>
+    </section>
+
+    <section class="level-roadmap hidden tab-section" id="roadmapSection">
+      <h2>Learning Roadmap</h2>
+      <p>Avanza desde cero hasta nivel avanzado.</p>
+
+      <div class="roadmap-grid">
+        <div class="roadmap-card active">
+          <h3>A0</h3>
+          <p>Absolute Beginner</p>
+          <span>Disponible</span>
+        </div>
+
+        <div class="roadmap-card locked">
+          <h3>A1</h3>
+          <p>Beginner</p>
+          <span>Bloqueado</span>
+        </div>
+
+        <div class="roadmap-card locked">
+          <h3>A2</h3>
+          <p>Elementary</p>
+          <span>Bloqueado</span>
+        </div>
+
+        <div class="roadmap-card locked">
+          <h3>B1</h3>
+          <p>Intermediate</p>
+          <span>Bloqueado</span>
+        </div>
+
+        <div class="roadmap-card locked">
+          <h3>B2</h3>
+          <p>Upper Intermediate</p>
+          <span>Bloqueado</span>
+        </div>
+
+        <div class="roadmap-card locked">
+          <h3>C1</h3>
+          <p>Advanced</p>
+          <span>Bloqueado</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="certificate-section hidden tab-section" id="certificateSection">
+      <h2>Certificate A0</h2>
+      <p>Cuando completes el nivel A0, podrás generar tu certificado.</p>
+
+      <div class="certificate-card" id="certificateCard">
+        <h1>English Star Academy</h1>
+        <h2>Certificate of Completion</h2>
+
+        <p>This certificate is proudly presented to</p>
+
+        <h3 id="certificateName">Student Name</h3>
+
+        <p>for completing</p>
+
+        <h2>Level A0 - Absolute Beginner</h2>
+
+        <p class="certificate-date" id="certificateDate"></p>
+
+        <h4>Learn English. Shine Everywhere.</h4>
+      </div>
+
+      <button class="certificate-btn" onclick="downloadCertificate()">
+        Descargar certificado
+      </button>
+    </section>
+    <nav class="bottom-nav">
+      <button class="bottom-item" onclick="showTab('dashboard', this)">
+        <span>⌂</span>
+        Dashboard
       </button>
 
-      <p id="speechResult">
-        Presiona el botón para comenzar.
-      </p>
-    </div>
-  </section>
-
-  <section class="reading-section hidden tab-section" id="readingSection">
-    <h2>Reading Lab</h2>
-    <p>Lee textos cortos y responde preguntas de comprensión.</p>
-
-    <div class="reading-card">
-      <h3 id="readingTitle">Reading 1</h3>
-
-      <p class="reading-text" id="readingText">
-        Hello. My name is Anna. I am a student.
-      </p>
-
-      <h3 id="readingQuestion">What is her name?</h3>
-      <div id="readingOptions"></div>
-      <p id="readingResult" class="result"></p>
-    </div>
-  </section>
-
-  <section class="writing-section hidden tab-section" id="writingSection">
-    <h2>Writing Lab</h2>
-    <p>Practica escritura con ejercicios guiados.</p>
-
-    <div class="writing-card">
-      <h3 id="writingTitle">Writing 1</h3>
-
-      <p id="writingPrompt">
-        Complete: _____ morning.
-      </p>
-
-      <input
-        type="text"
-        id="writingInput"
-        placeholder="Escribe tu respuesta aquí"
-      >
-
-      <button class="writing-btn" onclick="checkWritingAnswer()">
-        Verificar
+      <button class="bottom-item" onclick="showTab('mainContent', this)">
+        <span>▣</span>
+        Learn
       </button>
 
-      <p id="writingResult" class="result"></p>
-    </div>
-  </section>
+      <button class="bottom-item" onclick="showTab('listeningSection', this)">
+        <span>▶</span>
+        Practice
+      </button>
 
-  <section
-class="tab-section hidden" id="midtermSection">
+      <button class="bottom-item" onclick="showTab('achievementsSection', this)">
+        <span>★</span>
+        Achievements
+      </button>
 
-  <div class="section-header">
-    <h2>Midterm Exam A0</h2>
-    <p>
-      Evaluate Units 1–7.
-    </p>
+      <button class="bottom-item" onclick="showTab('certificateSection', this)">
+        <span>●</span>
+        Profile
+      </button>
+    </nav>
   </div>
 
-  <div id="midtermContainer"></div>
-  <div class="midterm-summary">
-  <button class="primary-btn" onclick="finishMidterm()">
-    Finish Midterm
-  </button>
-
-  <h3 id="midtermFinalResult"></h3>
-</div>
-  <div class="midterm-summary">
-
-  <button
-  class="primary-btn"
-  onclick="finishMidterm()">
-
-    Finish Midterm
-
-  </button>
-
-  <h3 id="midtermFinalResult"></h3>
-
-</div>
-
-</section>
-
-  <section class="exam-section hidden tab-section" id="examSection">
-    <h2>Final Exam A0</h2>
-    <p>Demuestra que dominas el nivel A0.</p>
-
-    <div class="exam-card">
-      <h3 id="examSkill">Vocabulary</h3>
-
-      <p id="examQuestion">
-        What does "Hello" mean?
-      </p>
-
-      <div id="examOptions"></div>
-
-      <input
-        type="text"
-        id="examInput"
-        class="hidden"
-        placeholder="Escribe tu respuesta aquí"
-      >
-
-      <button class="exam-btn hidden" id="examCheckBtn" onclick="checkExamInput()">
-        Verificar
-      </button>
-
-      <p id="examResult" class="result"></p>
-
-      <button class="exam-btn" onclick="nextExamQuestion()">
-        Siguiente pregunta
-      </button>
-    </div>
-
-    <div class="exam-score" id="examScoreBox">
-      Score: 0 / 0
-    </div>
-  </section>
-
-  <section class="achievements hidden tab-section" id="achievementsSection">
-    <h2>Achievements</h2>
-    <p>Tus recompensas aparecerán aquí mientras avanzas.</p>
-
-    <div class="medal-list" id="medalList">
-      <div class="empty-medals">
-        Todavía no tienes logros. Completa tu primera unidad.
-      </div>
-    </div>
-  </section>
-
-  <section class="level-roadmap hidden tab-section" id="roadmapSection">
-    <h2>Learning Roadmap</h2>
-    <p>Avanza desde cero hasta nivel avanzado.</p>
-
-    <div class="roadmap-grid">
-      <div class="roadmap-card active">
-        <h3>A0</h3>
-        <p>Absolute Beginner</p>
-        <span>Disponible</span>
-      </div>
-
-      <div class="roadmap-card locked">
-        <h3>A1</h3>
-        <p>Beginner</p>
-        <span>Bloqueado</span>
-      </div>
-
-      <div class="roadmap-card locked">
-        <h3>A2</h3>
-        <p>Elementary</p>
-        <span>Bloqueado</span>
-      </div>
-
-      <div class="roadmap-card locked">
-        <h3>B1</h3>
-        <p>Intermediate</p>
-        <span>Bloqueado</span>
-      </div>
-
-      <div class="roadmap-card locked">
-        <h3>B2</h3>
-        <p>Upper Intermediate</p>
-        <span>Bloqueado</span>
-      </div>
-
-      <div class="roadmap-card locked">
-        <h3>C1</h3>
-        <p>Advanced</p>
-        <span>Bloqueado</span>
-      </div>
-    </div>
-  </section>
-
-  <section class="certificate-section hidden tab-section" id="certificateSection">
-    <h2>Certificate A0</h2>
-    <p>Cuando completes el nivel A0, podrás generar tu certificado.</p>
-
-    <div class="certificate-card" id="certificateCard">
-      <h1>English Star Academy</h1>
-      <h2>Certificate of Completion</h2>
-
-      <p>This certificate is proudly presented to</p>
-
-      <h3 id="certificateName">Student Name</h3>
-
-      <p>for completing</p>
-
-      <h2>Level A0 - Absolute Beginner</h2>
-
-      <p class="certificate-date" id="certificateDate"></p>
-
-      <h4>Learn English. Shine Everywhere.</h4>
-    </div>
-
-    <button class="certificate-btn" onclick="downloadCertificate()">
-      Descargar certificado
-    </button>
-  </section>
-
-</div>
-
-<script src="levels/a0/vocabulary.js"></script>
-<script src="levels/a0/grammar.js"></script>
-<script src="levels/a0/audio.js"></script>
-<script src="levels/a0/quizzes.js"></script>
-<script src="levels/a0/lessons.js"></script>
-<script src="js/script.js"></script>
+  <script src="levels/a0/vocabulary.js"></script>
+  <script src="levels/a0/grammar.js"></script>
+  <script src="levels/a0/audio.js"></script>
+  <script src="levels/a0/quizzes.js"></script>
+  <script src="levels/a0/lessons.js"></script>
+  <script src="js/script.js"></script>
 
 </body>
+
 </html>

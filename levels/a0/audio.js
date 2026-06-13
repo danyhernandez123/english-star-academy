@@ -138,5 +138,40 @@ const a0Listening = [
   question: "How is the person?",
   options: ["Fine", "Sad", "Tired"],
   answer: "Fine"
+},
+{
+  title: "Listening A0-21: Favorite Color",
+  text: "My favorite color is green. My brother likes blue.",
+  question: "What is the favorite color?",
+  options: ["Green", "Blue", "Red"],
+  answer: "Green"
+},
+{
+  title: "Listening A0-22: Nationality",
+  text: "Hello. I am from Peru. I am Peruvian.",
+  question: "What nationality is the person?",
+  options: ["Peruvian", "Canadian", "French"],
+  answer: "Peruvian"
+},
+{
+  title: "Listening A0-23: Music",
+  text: "I love music. I play the guitar every weekend.",
+  question: "What instrument does the person play?",
+  options: ["Guitar", "Piano", "Drums"],
+  answer: "Guitar"
+},
+{
+  title: "Listening A0-24: Family Members",
+  text: "I have one brother and two sisters.",
+  question: "How many sisters does the person have?",
+  options: ["One", "Two", "Three"],
+  answer: "Two"
+},
+{
+  title: "Listening A0-25: Daily Routine",
+  text: "I wake up at six o'clock. I have breakfast and go to school.",
+  question: "What does the person do after breakfast?",
+  options: ["Go to school", "Go to sleep", "Watch TV"],
+  answer: "Go to school"
 }
 ];

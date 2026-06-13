@@ -54,20 +54,20 @@ function showApp() {
     }
 
     const roadmap = document.getElementById("roadmapSection");
-if (roadmap) {
-  roadmap.classList.remove("hidden");
-}
+    if (roadmap) {
+      roadmap.classList.remove("hidden");
+    }
 
     const welcomeText = document.getElementById("welcomeText");
-const profileText = document.getElementById("profileText");
+    const profileText = document.getElementById("profileText");
 
-if (welcomeText) {
-  welcomeText.textContent = `Welcome, ${state.studentName}`;
-}
+    if (welcomeText) {
+      welcomeText.textContent = `Welcome, ${state.studentName}`;
+    }
 
-if (profileText) {
-  profileText.textContent = `Profile: ${state.profile}`;
-}
+    if (profileText) {
+      profileText.textContent = `Profile: ${state.profile}`;
+    }
 
     updateDailyStreak();
     updateStats();
@@ -85,43 +85,43 @@ function updateStats() {
 
   document.getElementById("xp").textContent = state.xp;
   const streakElement =
-  document.getElementById("streak");
+    document.getElementById("streak");
 
-if (streakElement) {
-  streakElement.textContent =
-    state.streak;
-}
+  if (streakElement) {
+    streakElement.textContent =
+      state.streak;
+  }
   const studentLevel = Math.floor(state.xp / 100) + 1;
 
-const studentLevelElement =
-  document.getElementById("studentLevel");
+  const studentLevelElement =
+    document.getElementById("studentLevel");
 
-if (studentLevelElement) {
-  studentLevelElement.textContent = studentLevel;
-}
+  if (studentLevelElement) {
+    studentLevelElement.textContent = studentLevel;
+  }
 
-const xpInCurrentLevel = state.xp % 100;
+  const xpInCurrentLevel = state.xp % 100;
 
-const xpToNextElement =
-  document.getElementById("xpToNext");
+  const xpToNextElement =
+    document.getElementById("xpToNext");
 
-const miniXpFill =
-  document.getElementById("miniXpFill");
+  const miniXpFill =
+    document.getElementById("miniXpFill");
 
-if (xpToNextElement && miniXpFill) {
-  xpToNextElement.textContent =
-    `${xpInCurrentLevel} / 100`;
+  if (xpToNextElement && miniXpFill) {
+    xpToNextElement.textContent =
+      `${xpInCurrentLevel} / 100`;
 
-  miniXpFill.style.width =
-    xpInCurrentLevel + "%";
-}
+    miniXpFill.style.width =
+      xpInCurrentLevel + "%";
+  }
   document.getElementById("progress").textContent = progress + "%";
   document.getElementById("medals").textContent = state.medals.length;
   const progressFill = document.getElementById("progressFill");
 
-if (progressFill) {
-  progressFill.style.width = progress + "%";
-}
+  if (progressFill) {
+    progressFill.style.width = progress + "%";
+  }
 
   const lessonCounter = document.getElementById("lessonCounter");
 
@@ -132,123 +132,123 @@ if (progressFill) {
   updateRoadmap();
   renderMedals();
   const topProfileName = document.getElementById("topProfileName");
-const topStudentLevel = document.getElementById("topStudentLevel");
-const topXp = document.getElementById("topXp");
+  const topStudentLevel = document.getElementById("topStudentLevel");
+  const topXp = document.getElementById("topXp");
 
-if (topProfileName) {
-  topProfileName.textContent = state.studentName || "Student";
-}
-
-if (topStudentLevel) {
-  topStudentLevel.textContent =
-    Math.floor(state.xp / 100) + 1;
-}
-
-if (topXp) {
-  topXp.textContent = state.xp;
-}
-const headerName = document.getElementById("headerName");
-const headerLevel = document.getElementById("headerLevel");
-const headerXp = document.getElementById("headerXp");
-const headerStreak = document.getElementById("headerStreak");
-
-if (headerName) {
-  headerName.textContent = state.studentName || "Student";
-}
-
-if (headerLevel) {
-  headerLevel.textContent = Math.floor(state.xp / 100) + 1;
-}
-
-if (headerXp) {
-  headerXp.textContent = state.xp;
-}
-
-if (headerStreak) {
-  headerStreak.textContent = state.streak || 1;
-}
-const heroStudentName =
-document.getElementById(
-  "heroStudentName"
-);
-
-if(heroStudentName){
-  heroStudentName.textContent =
-  state.studentName;
-}
-const courseProgress =
-document.getElementById("courseProgress");
-
-const courseBarFill =
-document.getElementById("courseBarFill");
-
-if(courseProgress){
-  courseProgress.textContent =
-  progress + "%";
-}
-
-if(courseBarFill){
-  courseBarFill.style.width =
-  progress + "%";
-}
-const nextIndex = state.completed.length;
-const nextLesson = lessons[nextIndex] || lessons[lessons.length - 1];
-
-const nextLessonTitle = document.getElementById("nextLessonTitle");
-const nextLessonObjective = document.getElementById("nextLessonObjective");
-
-if (nextLessonTitle && nextLesson) {
-  nextLessonTitle.textContent =
-    `${nextLesson.unit}: ${nextLesson.title}`;
-}
-
-if (nextLessonObjective && nextLesson) {
-  nextLessonObjective.textContent = nextLesson.objective;
-}
-
-const activityTitle = document.getElementById("activityTitle");
-const activityText = document.getElementById("activityText");
-
-if (activityTitle && activityText) {
-  if (state.completed.length === 0) {
-    activityTitle.textContent = "No activity yet";
-    activityText.textContent =
-      "Complete your first lesson to see your progress here.";
-  } else {
-    activityTitle.textContent = "Latest progress";
-    activityText.textContent =
-      `${state.completed.length} of ${lessons.length} A0 lessons completed.`;
+  if (topProfileName) {
+    topProfileName.textContent = state.studentName || "Student";
   }
-}
-const sidebarStudentName =
-document.getElementById(
-"sidebarStudentName"
-);
 
-const sidebarLevel =
-document.getElementById(
-"sidebarLevel"
-);
+  if (topStudentLevel) {
+    topStudentLevel.textContent =
+      Math.floor(state.xp / 100) + 1;
+  }
 
-const sidebarXp =
-document.getElementById(
-"sidebarXp"
-);
+  if (topXp) {
+    topXp.textContent = state.xp;
+  }
+  const headerName = document.getElementById("headerName");
+  const headerLevel = document.getElementById("headerLevel");
+  const headerXp = document.getElementById("headerXp");
+  const headerStreak = document.getElementById("headerStreak");
 
-if(sidebarStudentName){
- sidebarStudentName.textContent =
- state.studentName;
-}
+  if (headerName) {
+    headerName.textContent = state.studentName || "Student";
+  }
 
-if(sidebarLevel){
- sidebarLevel.textContent =
- Math.floor(state.xp / 100) + 1;
-}
+  if (headerLevel) {
+    headerLevel.textContent = Math.floor(state.xp / 100) + 1;
+  }
 
-if(sidebarXp){
- sidebarXp.textContent =
- state.xp;
-}
+  if (headerXp) {
+    headerXp.textContent = state.xp;
+  }
+
+  if (headerStreak) {
+    headerStreak.textContent = state.streak || 1;
+  }
+  const heroStudentName =
+    document.getElementById(
+      "heroStudentName"
+    );
+
+  if (heroStudentName) {
+    heroStudentName.textContent =
+      state.studentName;
+  }
+  const courseProgress =
+    document.getElementById("courseProgress");
+
+  const courseBarFill =
+    document.getElementById("courseBarFill");
+
+  if (courseProgress) {
+    courseProgress.textContent =
+      progress + "%";
+  }
+
+  if (courseBarFill) {
+    courseBarFill.style.width =
+      progress + "%";
+  }
+  const nextIndex = state.completed.length;
+  const nextLesson = lessons[nextIndex] || lessons[lessons.length - 1];
+
+  const nextLessonTitle = document.getElementById("nextLessonTitle");
+  const nextLessonObjective = document.getElementById("nextLessonObjective");
+
+  if (nextLessonTitle && nextLesson) {
+    nextLessonTitle.textContent =
+      `${nextLesson.unit}: ${nextLesson.title}`;
+  }
+
+  if (nextLessonObjective && nextLesson) {
+    nextLessonObjective.textContent = nextLesson.objective;
+  }
+
+  const activityTitle = document.getElementById("activityTitle");
+  const activityText = document.getElementById("activityText");
+
+  if (activityTitle && activityText) {
+    if (state.completed.length === 0) {
+      activityTitle.textContent = "No activity yet";
+      activityText.textContent =
+        "Complete your first lesson to see your progress here.";
+    } else {
+      activityTitle.textContent = "Latest progress";
+      activityText.textContent =
+        `${state.completed.length} of ${lessons.length} A0 lessons completed.`;
+    }
+  }
+  const sidebarStudentName =
+    document.getElementById(
+      "sidebarStudentName"
+    );
+
+  const sidebarLevel =
+    document.getElementById(
+      "sidebarLevel"
+    );
+
+  const sidebarXp =
+    document.getElementById(
+      "sidebarXp"
+    );
+
+  if (sidebarStudentName) {
+    sidebarStudentName.textContent =
+      state.studentName;
+  }
+
+  if (sidebarLevel) {
+    sidebarLevel.textContent =
+      Math.floor(state.xp / 100) + 1;
+  }
+
+  if (sidebarXp) {
+    sidebarXp.textContent =
+      state.xp;
+  }
 }
 
 function renderLessons() {
@@ -277,28 +277,28 @@ function renderLessons() {
 
     let moduleIcon = "📦";
 
-if (moduleName.includes("Communication")) {
-  moduleIcon = "💬";
-}
+    if (moduleName.includes("Communication")) {
+      moduleIcon = "💬";
+    }
 
-if (moduleName.includes("My World")) {
-  moduleIcon = "👨‍👩‍👧";
-}
+    if (moduleName.includes("My World")) {
+      moduleIcon = "👨‍👩‍👧";
+    }
 
-if (moduleName.includes("Daily")) {
-  moduleIcon = "☀️";
-}
+    if (moduleName.includes("Daily")) {
+      moduleIcon = "☀️";
+    }
 
-const unitCount = modules[moduleName].length;
-const completedInModule = modules[moduleName].filter(lesson =>
-  state.completed.includes(lesson.index)
-).length;
+    const unitCount = modules[moduleName].length;
+    const completedInModule = modules[moduleName].filter(lesson =>
+      state.completed.includes(lesson.index)
+    ).length;
 
-const moduleProgress = Math.round(
-  (completedInModule / unitCount) * 100
-);
+    const moduleProgress = Math.round(
+      (completedInModule / unitCount) * 100
+    );
 
-moduleBox.innerHTML = `
+    moduleBox.innerHTML = `
   <div class="module-header">
     <div>
       <span class="module-label">Course Module</span>
@@ -328,19 +328,19 @@ moduleBox.innerHTML = `
       if (isLocked) button.classList.add("locked");
 
       let statusClass = "available";
-let statusText = "⭐ Available";
+      let statusText = "⭐ Available";
 
-if (isCompleted) {
-  statusClass = "completed";
-  statusText = "✅ Completed";
-}
+      if (isCompleted) {
+        statusClass = "completed";
+        statusText = "✅ Completed";
+      }
 
-if (isLocked) {
-  statusClass = "locked";
-  statusText = "🔒 Locked";
-}
+      if (isLocked) {
+        statusClass = "locked";
+        statusText = "🔒 Locked";
+      }
 
-button.innerHTML = `
+      button.innerHTML = `
   <div class="lesson-card-content">
     <div>
       <strong>${lesson.unit}: ${lesson.title}</strong>
@@ -413,8 +413,7 @@ function openLesson(index) {
 <p class="reading-box">${lesson.reading}</p>
 
 <div class="reading-texts">
-  ${
-    lesson.readingTexts
+  ${lesson.readingTexts
       ? lesson.readingTexts.map((reading, i) => `
         <div class="reading-text-card">
           <strong>${reading.title}</strong>
@@ -422,7 +421,7 @@ function openLesson(index) {
         </div>
       `).join("")
       : ""
-  }
+    }
 </div>
 
     <h3>Writing Practice</h3>
@@ -430,8 +429,7 @@ function openLesson(index) {
 <p>${lesson.writing}</p>
 
 <div class="writing-exercises">
-  ${
-    lesson.writingExercises
+  ${lesson.writingExercises
       ? lesson.writingExercises.map((exercise, i) => `
         <div class="writing-exercise-card">
           <strong>Exercise ${i + 1}</strong>
@@ -439,7 +437,7 @@ function openLesson(index) {
         </div>
       `).join("")
       : ""
-  }
+    }
 </div>
 
     <div class="quiz">
@@ -520,7 +518,7 @@ function renderMedals() {
   }
 
   medalList.innerHTML =
-state.medals.map(medal => `
+    state.medals.map(medal => `
   <div class="medal-item">
 
     <div class="medal-icon">
@@ -564,9 +562,9 @@ let currentWord = a0Vocabulary[currentWordIndex];
 
 function renderVocabularyCategories() {
   const container =
-  document.getElementById(
-    "vocabularyCategories"
-  );
+    document.getElementById(
+      "vocabularyCategories"
+    );
 
   if (!container) return;
 
@@ -583,8 +581,8 @@ function renderVocabularyCategories() {
   });
 
   container.innerHTML =
-  Object.keys(categories)
-  .map(category => `
+    Object.keys(categories)
+      .map(category => `
 
     <div
       class="vocabulary-category-card"
@@ -606,9 +604,9 @@ function renderVocabularyCategories() {
 function filterVocabulary(category) {
 
   const index =
-  a0Vocabulary.findIndex(
-    word => word.category === category
-  );
+    a0Vocabulary.findIndex(
+      word => word.category === category
+    );
 
   if (index !== -1) {
 
@@ -649,6 +647,8 @@ function renderListening() {
   const item = a0Listening[currentListeningIndex];
 
   document.getElementById("listeningTitle").textContent = item.title;
+  document.getElementById("listeningProgress").textContent =
+    `${currentListeningIndex + 1} / ${a0Listening.length}`;
   document.getElementById("listeningText").textContent = item.text;
   document.getElementById("listeningQuestion").textContent = item.question;
 
@@ -665,6 +665,18 @@ function renderListening() {
 function playListening() {
   const item = a0Listening[currentListeningIndex];
   speak(item.text);
+}
+function nextListening() {
+  currentListeningIndex++;
+
+  if (currentListeningIndex >= a0Listening.length) {
+    currentListeningIndex = 0;
+  }
+
+  state.currentListeningIndex = currentListeningIndex;
+
+  saveState();
+  renderListening();
 }
 
 function checkListeningAnswer(option) {
@@ -693,7 +705,7 @@ function checkListeningAnswer(option) {
     saveState();
     updateStats();
 
-    setTimeout(function() {
+    setTimeout(function () {
       renderListening();
     }, 1200);
 
@@ -755,7 +767,7 @@ function startSpeaking() {
 
   document.getElementById("speechResult").textContent = "🎤 Escuchando...";
 
-  recognition.onresult = function(event) {
+  recognition.onresult = function (event) {
     const transcript = event.results[0][0].transcript.toLowerCase();
 
     const target = document
@@ -796,7 +808,7 @@ function startSpeaking() {
     `;
   };
 
-  recognition.onerror = function(event) {
+  recognition.onerror = function (event) {
     document.getElementById("speechResult").textContent =
       "Error al escuchar: " + event.error;
   };
@@ -1078,16 +1090,15 @@ function renderMidtermExam() {
 
       <p>${question.question}</p>
 
-      ${
-        question.type === "choice"
-          ? question.options.map(option => `
+      ${question.type === "choice"
+      ? question.options.map(option => `
             <button
               class="exam-option"
               onclick="checkMidtermAnswer(${index}, '${option}')">
               ${option}
             </button>
           `).join("")
-          : `
+      : `
             <input
               type="text"
               id="midtermInput${index}"
@@ -1100,7 +1111,7 @@ function renderMidtermExam() {
               Check
             </button>
           `
-      }
+    }
 
       <p class="result" id="midtermResult${index}"></p>
     </div>
@@ -1110,39 +1121,39 @@ function renderMidtermExam() {
 function finishMidterm() {
 
   const result =
-  document.getElementById(
-    "midtermFinalResult"
-  );
+    document.getElementById(
+      "midtermFinalResult"
+    );
 
   const total =
-  a0MidtermExam.length;
+    a0MidtermExam.length;
 
   const percentage =
-  Math.round(
-    (midtermScore / total) * 100
-  );
+    Math.round(
+      (midtermScore / total) * 100
+    );
 
   if (percentage >= 70) {
 
-  state.xp += 100;
+    state.xp += 100;
 
-  saveState();
+    saveState();
 
-  updateStats();
+    updateStats();
 
-  result.textContent =
-    `PASSED - ${midtermScore}/${total} (${percentage}%) | +100 XP`;
+    result.textContent =
+      `PASSED - ${midtermScore}/${total} (${percentage}%) | +100 XP`;
 
-  result.style.color = "green";
+    result.style.color = "green";
 
-} else {
+  } else {
 
-  result.textContent =
-    `TRY AGAIN - ${midtermScore}/${total} (${percentage}%)`;
+    result.textContent =
+      `TRY AGAIN - ${midtermScore}/${total} (${percentage}%)`;
 
-  result.style.color = "red";
+    result.style.color = "red";
 
-}
+  }
 
 }
 
@@ -1152,26 +1163,26 @@ function checkMidtermAnswer(index, option) {
 
   if (!midtermAnswered[index]) {
 
-  if (option === question.answer) {
+    if (option === question.answer) {
 
-    midtermScore++;
+      midtermScore++;
 
-    result.textContent = "Correct";
-    result.style.color = "green";
+      result.textContent = "Correct";
+      result.style.color = "green";
 
-  } else {
+    } else {
 
-    result.textContent =
-    "Incorrect. Answer: " +
-    question.answer;
+      result.textContent =
+        "Incorrect. Answer: " +
+        question.answer;
 
-    result.style.color = "red";
+      result.style.color = "red";
+
+    }
+
+    midtermAnswered[index] = true;
 
   }
-
-  midtermAnswered[index] = true;
-
-}
 }
 
 function checkMidtermInput(index) {
@@ -1186,29 +1197,29 @@ function checkMidtermInput(index) {
 
   if (!midtermAnswered[index]) {
 
-  if (
-    input ===
-    question.answer.toLowerCase()
-  ) {
+    if (
+      input ===
+      question.answer.toLowerCase()
+    ) {
 
-    midtermScore++;
+      midtermScore++;
 
-    result.textContent = "Correct";
-    result.style.color = "green";
+      result.textContent = "Correct";
+      result.style.color = "green";
 
-  } else {
+    } else {
 
-    result.textContent =
-      "Incorrect. Answer: " +
-      question.answer;
+      result.textContent =
+        "Incorrect. Answer: " +
+        question.answer;
 
-    result.style.color = "red";
+      result.style.color = "red";
+
+    }
+
+    midtermAnswered[index] = true;
 
   }
-
-  midtermAnswered[index] = true;
-
-}
 }
 function finishMidterm() {
   const result = document.getElementById("midtermFinalResult");
@@ -1495,6 +1506,15 @@ function showTab(sectionId, buttonElement = null) {
   });
 
   if (buttonElement) {
+    buttonElement.classList.add("active");
+  }
+  const bottomItems = document.querySelectorAll(".bottom-item");
+
+  bottomItems.forEach(item => {
+    item.classList.remove("active");
+  });
+
+  if (buttonElement && buttonElement.classList.contains("bottom-item")) {
     buttonElement.classList.add("active");
   }
 }
