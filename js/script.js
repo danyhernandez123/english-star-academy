@@ -1539,3 +1539,10 @@ function toggleMobileMenu() {
 
   moreBtn.textContent = expanded ? "More ▲" : "More ▼";
 }
+function closeWelcome() {
+  const welcomeOverlay = document.getElementById("welcomeOverlay");
+
+  if (welcomeOverlay) {
+    welcomeOverlay.classList.add("hide");
+  }
+}
