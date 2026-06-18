@@ -254,7 +254,7 @@ function updateStats() {
 function renderLessons() {
   lessonList.innerHTML = `
     <h2>📚 Nivel A0</h2>
-    <p>3 módulos · 10 unidades</p>
+    <p>4 módulos · ${lessons.length} unidades</p>
     <br>
   `;
 
@@ -271,25 +271,12 @@ function renderLessons() {
     });
   });
 
-  Object.keys(modules).forEach(moduleName => {
+  Object.keys(modules).forEach((moduleName, moduleIndex) => {
     const moduleBox = document.createElement("div");
-    moduleBox.className = "module-box";
-
-    let moduleIcon = "📦";
-
-    if (moduleName.includes("Communication")) {
-      moduleIcon = "💬";
-    }
-
-    if (moduleName.includes("My World")) {
-      moduleIcon = "👨‍👩‍👧";
-    }
-
-    if (moduleName.includes("Daily")) {
-      moduleIcon = "☀️";
-    }
+    moduleBox.className = "module-box accordion-module";
 
     const unitCount = modules[moduleName].length;
+
     const completedInModule = modules[moduleName].filter(lesson =>
       state.completed.includes(lesson.index)
     ).length;
@@ -298,23 +285,31 @@ function renderLessons() {
       (completedInModule / unitCount) * 100
     );
 
+    const isOpen = moduleIndex === 0 ? "open" : "";
+
     moduleBox.innerHTML = `
-  <div class="module-header">
-    <div>
-      <span class="module-label">Course Module</span>
-      <h3>${moduleName}</h3>
-      <p>${unitCount} units · ${completedInModule} completed · ${moduleProgress}%</p>
+      <button class="accordion-header" onclick="toggleModule(this)">
+        <div>
+          <span class="module-label">Course Module</span>
+          <h3>${moduleName}</h3>
+          <p>${unitCount} units · ${completedInModule} completed · ${moduleProgress}%</p>
 
-<div class="module-progress">
-  <div style="width: ${moduleProgress}%"></div>
-</div>
-    </div>
+          <div class="module-progress">
+            <div style="width: ${moduleProgress}%"></div>
+          </div>
+        </div>
 
-    <div class="module-number">
-      ${unitCount}
-    </div>
-  </div>
-`;
+        <div class="accordion-right">
+          <span class="module-number">${unitCount}</span>
+          <span class="accordion-icon">⌄</span>
+        </div>
+      </button>
+
+      <div class="accordion-content ${isOpen}">
+      </div>
+    `;
+
+    const content = moduleBox.querySelector(".accordion-content");
 
     modules[moduleName].forEach(lesson => {
       const isCompleted = state.completed.includes(lesson.index);
@@ -328,30 +323,30 @@ function renderLessons() {
       if (isLocked) button.classList.add("locked");
 
       let statusClass = "available";
-      let statusText = "⭐ Available";
+      let statusText = "Available";
 
       if (isCompleted) {
         statusClass = "completed";
-        statusText = "✅ Completed";
+        statusText = "Completed";
       }
 
       if (isLocked) {
         statusClass = "locked";
-        statusText = "🔒 Locked";
+        statusText = "Locked";
       }
 
       button.innerHTML = `
-  <div class="lesson-card-content">
-    <div>
-      <strong>${lesson.unit}: ${lesson.title}</strong>
-      <p>${lesson.objective}</p>
-    </div>
+        <div class="lesson-card-content">
+          <div>
+            <strong>${lesson.unit}: ${lesson.title}</strong>
+            <p>${lesson.objective}</p>
+          </div>
 
-    <span class="status-pill ${statusClass}">
-      ${statusText}
-    </span>
-  </div>
-`;
+          <span class="status-pill ${statusClass}">
+            ${statusText}
+          </span>
+        </div>
+      `;
 
       button.onclick = () => {
         if (!isLocked) {
@@ -361,11 +356,18 @@ function renderLessons() {
         }
       };
 
-      moduleBox.appendChild(button);
+      content.appendChild(button);
     });
 
     lessonList.appendChild(moduleBox);
   });
+}
+function toggleModule(header) {
+  const moduleBox = header.closest(".accordion-module");
+  const content = moduleBox.querySelector(".accordion-content");
+
+  content.classList.toggle("open");
+  moduleBox.classList.toggle("active");
 }
 
 function openLesson(index) {
@@ -1544,5 +1546,14 @@ function closeWelcome() {
 
   if (welcomeOverlay) {
     welcomeOverlay.classList.add("hide");
+    localStorage.setItem("welcomeSeen", "true");
   }
 }
+window.addEventListener("DOMContentLoaded", function () {
+  const welcomeOverlay = document.getElementById("welcomeOverlay");
+  const welcomeSeen = localStorage.getItem("welcomeSeen");
+
+  if (welcomeOverlay && welcomeSeen === "true") {
+    welcomeOverlay.classList.add("hide");
+  }
+});

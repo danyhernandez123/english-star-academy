@@ -3512,3 +3512,144 @@ body {
     font-size:27px;
   }
 }
+.welcome-benefits {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.welcome-benefits span {
+  background: #f8fafc;
+  color: #1e3a8a;
+  border: 1px solid #e5e7eb;
+  padding: 12px 14px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.welcome-modal {
+  position: relative;
+  overflow: hidden;
+}
+
+.welcome-modal::before {
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  background: rgba(34, 197, 94, 0.12);
+  border-radius: 50%;
+  top: -70px;
+  right: -70px;
+}
+
+.welcome-modal::after {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: rgba(30, 64, 175, 0.10);
+  border-radius: 50%;
+  bottom: -60px;
+  left: -60px;
+}
+
+.welcome-modal > * {
+  position: relative;
+  z-index: 1;
+}
+.courses-panel {
+  display: grid;
+  gap: 20px;
+}
+
+.courses-header {
+  background: linear-gradient(135deg, #eff6ff, #ffffff);
+  border: 1px solid #dbeafe;
+  border-radius: 28px;
+  padding: 28px;
+  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.06);
+}
+
+.courses-header h2 {
+  color: #0f172a;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.courses-header p {
+  color: #64748b;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .courses-header {
+    padding: 22px;
+    border-radius: 24px;
+  }
+
+  .courses-header h2 {
+    font-size: 25px;
+  }
+}
+.accordion-module {
+  padding: 0;
+  overflow: hidden;
+}
+
+.accordion-header {
+  width: 100%;
+  border: none;
+  background: white;
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  cursor: pointer;
+}
+
+.accordion-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.accordion-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #eff6ff;
+  color: #1e3a8a;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  transition: 0.3s;
+}
+
+.accordion-content {
+  display: none;
+  padding: 0 24px 24px;
+}
+
+.accordion-content.open {
+  display: block;
+}
+
+.accordion-module.active .accordion-icon {
+  transform: rotate(180deg);
+  background: #16a34a;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .accordion-header {
+    padding: 18px;
+  }
+
+  .accordion-content {
+    padding: 0 18px 18px;
+  }
+}

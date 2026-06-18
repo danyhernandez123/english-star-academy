@@ -21,6 +21,11 @@
       Learn step by step with lessons, listening practice, vocabulary,
       grammar and exams designed for real progress.
     </p>
+    <div class="welcome-benefits">
+  <span>25+ Listening activities</span>
+  <span>XP & achievements</span>
+  <span>A0 full course</span>
+</div>
 
     <button onclick="closeWelcome()">
       Start Learning
@@ -229,29 +234,43 @@
     </section>
 
     <main class="content hidden tab-section" id="mainContent">
-      <section class="lessons" id="lessonList"></section>
-
-      <section class="lesson-view" id="lessonView">
-        <h2>Selecciona una unidad</h2>
-        <p>Comienza con la primera unidad del Nivel A0.</p>
-      </section>
-    </main>
-
-    <h2>Vocabulary Lab</h2>
-    <p>Study essential A0 words organized by category.</p>
-
-    <div class="vocabulary-categories" id="vocabularyCategories"></div>
-
-    <div class="flashcard" id="flashcard">
-      <h3 id="flashEnglish">Hello</h3>
-      <p id="flashSpanish" class="hidden">Hola</p>
+  <section class="courses-panel">
+    <div class="courses-header">
+      <span class="section-label">Current Course</span>
+      <h2>English A0 Foundation</h2>
+      <p>
+        Complete the beginner path with lessons, vocabulary, grammar,
+        listening, reading and writing practice.
+      </p>
     </div>
 
-    <div class="flash-actions">
-      <button onclick="showMeaning()">Show meaning</button>
-      <button onclick="nextWord()">Next word</button>
-      <button onclick="speak(currentWord.english)">Listen</button>
-    </div>
+    <section class="lessons" id="lessonList"></section>
+  </section>
+
+  <section class="lesson-view" id="lessonView">
+    <span class="section-label">Lesson Preview</span>
+    <h2>Select a unit</h2>
+    <p>Choose your next A0 lesson and continue your English journey.</p>
+  </section>
+</main>
+
+    <section class="vocabulary-section hidden tab-section" id="vocabularySection">
+  <h2>Vocabulary Lab</h2>
+  <p>Study essential A0 words organized by category.</p>
+
+  <div class="vocabulary-categories" id="vocabularyCategories"></div>
+
+  <div class="flashcard" id="flashcard">
+    <h3 id="flashEnglish">Hello</h3>
+    <p id="flashSpanish" class="hidden">Hola</p>
+  </div>
+
+  <div class="flash-actions">
+    <button onclick="showMeaning()">Show meaning</button>
+    <button onclick="nextWord()">Next word</button>
+    <button onclick="speak(currentWord.english)">Listen</button>
+  </div>
+</section>
 
     <section class="grammar-section hidden tab-section" id="grammarSection">
       <h2>Grammar Lab</h2>
