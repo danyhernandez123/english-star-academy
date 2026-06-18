@@ -13,6 +13,19 @@ let state = JSON.parse(localStorage.getItem("englishStarState")) || {
 
 const lessonList = document.getElementById("lessonList");
 const lessonView = document.getElementById("lessonView");
+let currentLessonIndex = 0;
+let currentLessonStep = 0;
+
+const lessonSteps = [
+  "Objective",
+  "Vocabulary",
+  "Grammar",
+  "Listening",
+  "Speaking",
+  "Reading",
+  "Writing",
+  "Quiz"
+];
 
 function saveState() {
   localStorage.setItem("englishStarState", JSON.stringify(state));
@@ -369,94 +382,219 @@ function toggleModule(header) {
   content.classList.toggle("open");
   moduleBox.classList.toggle("active");
 }
-
 function openLesson(index) {
-  const lesson = lessons[index];
+  currentLessonIndex = index;
+  currentLessonStep = 0;
+  renderLessonStep();
+}
+
+function renderLessonStep() {
+  const lesson = lessons[currentLessonIndex];
+  const step = lessonSteps[currentLessonStep];
+
+  let stepContent = "";
+
+  if (step === "Objective") {
+    stepContent = `
+      <div class="lesson-step-card">
+        <span class="section-label">Learning Objective</span>
+        <h3>${lesson.objective}</h3>
+        <p>
+          In this unit, you will learn the key words, phrases and practice
+          activities for this topic.
+        </p>
+      </div>
+    `;
+  }
+
+  if (step === "Vocabulary") {
+    stepContent = `
+      <div class="lesson-step-card">
+        <span class="section-label">Vocabulary</span>
+        <h3>Study these words</h3>
+
+        <div class="vocabulary-grid">
+          ${lesson.words.map(word => `
+            <div class="vocabulary-card">
+              ${word}
+            </div>
+          `).join("")}
+        </div>
+      </div>
+    `;
+  }
+
+  if (step === "Grammar") {
+    stepContent = `
+      <div class="lesson-step-card">
+        <span class="section-label">Grammar</span>
+        <h3>Useful structures</h3>
+
+        <ul class="lesson-step-list">
+          ${lesson.grammar.map(item => `<li>${item}</li>`).join("")}
+        </ul>
+      </div>
+    `;
+  }
+
+  if (step === "Listening") {
+    stepContent = `
+      <div class="lesson-step-card">
+        <span class="section-label">Listening</span>
+        <h3>Listen and repeat</h3>
+        <p>${lesson.phrase}</p>
+
+        <button class="audio-btn" onclick="speak('${lesson.phrase}')">
+          Listen
+        </button>
+      </div>
+    `;
+  }
+
+  if (step === "Speaking") {
+    stepContent = `
+      <div class="lesson-step-card">
+        <span class="section-label">Speaking</span>
+        <h3>Repeat this phrase</h3>
+        <h2>"${lesson.phrase}"</h2>
+        <p>Practice slowly and clearly.</p>
+      </div>
+    `;
+  }
+
+  if (step === "Reading") {
+    stepContent = `
+      <div class="lesson-step-card">
+        <span class="section-label">Reading</span>
+        <h3>Read the short text</h3>
+
+        <p class="reading-box">${lesson.reading}</p>
+
+        <div class="reading-texts">
+          ${
+            lesson.readingTexts
+              ? lesson.readingTexts.map(reading => `
+                <div class="reading-text-card">
+                  <strong>${reading.title}</strong>
+                  <p>${reading.text}</p>
+                </div>
+              `).join("")
+              : ""
+          }
+        </div>
+      </div>
+    `;
+  }
+
+  if (step === "Writing") {
+    stepContent = `
+      <div class="lesson-step-card">
+        <span class="section-label">Writing</span>
+        <h3>Writing Practice</h3>
+
+        <p>${lesson.writing}</p>
+
+        <div class="writing-exercises">
+          ${
+            lesson.writingExercises
+              ? lesson.writingExercises.map((exercise, i) => `
+                <div class="writing-exercise-card">
+                  <strong>Exercise ${i + 1}</strong>
+                  <p>${exercise.prompt}</p>
+                </div>
+              `).join("")
+              : ""
+          }
+        </div>
+      </div>
+    `;
+  }
+
+  if (step === "Quiz") {
+    stepContent = `
+      <div class="lesson-step-card">
+        <span class="section-label">Quiz</span>
+        <h3>${lesson.question}</h3>
+
+        ${lesson.options.map(option => `
+          <button class="option" onclick="checkAnswer('${option}', '${lesson.answer}', ${currentLessonIndex})">
+            ${option}
+          </button>
+        `).join("")}
+
+        <p class="result" id="result"></p>
+      </div>
+    `;
+  }
 
   lessonView.innerHTML = `
-    <p class="tag">${lesson.module}</p>
-    <p class="tag">${lesson.unit}</p>
+    <div class="lesson-player">
+      <div class="lesson-player-header">
+        <div>
+          <span class="tag">${lesson.module}</span>
+          <span class="tag">${lesson.unit}</span>
 
-    <h2>${lesson.title}</h2>
-
-<div class="lesson-objective">
-  <span>Learning Objective</span>
-  <p>${lesson.objective}</p>
-</div>
-
-    <h3>🧠 Vocabulary</h3>
-    <div>
-      <h3>Vocabulary</h3>
-
-<div class="vocabulary-grid">
-  ${lesson.words.map(word => `
-    <div class="vocabulary-card">
-      ${word}
-    </div>
-  `).join("")}
-</div>
-    </div>
-
-    <h3>📘 Grammar</h3>
-    <ul>
-      ${lesson.grammar.map(item => `<li>${item}</li>`).join("")}
-    </ul>
-
-    <h3>🎧 Listening</h3>
-    <p>Escucha la frase principal:</p>
-    <button class="audio-btn" onclick="speak('${lesson.phrase}')">▶ Escuchar</button>
-
-    <h3>🗣 Speaking</h3>
-    <p>Repite:</p>
-    <h2>"${lesson.phrase}"</h2>
-
-    <h3>Reading Practice</h3>
-
-<p class="reading-box">${lesson.reading}</p>
-
-<div class="reading-texts">
-  ${lesson.readingTexts
-      ? lesson.readingTexts.map((reading, i) => `
-        <div class="reading-text-card">
-          <strong>${reading.title}</strong>
-          <p>${reading.text}</p>
+          <h2>${lesson.title}</h2>
+          <p>Step ${currentLessonStep + 1} of ${lessonSteps.length}: ${step}</p>
         </div>
-      `).join("")
-      : ""
-    }
-</div>
 
-    <h3>Writing Practice</h3>
-
-<p>${lesson.writing}</p>
-
-<div class="writing-exercises">
-  ${lesson.writingExercises
-      ? lesson.writingExercises.map((exercise, i) => `
-        <div class="writing-exercise-card">
-          <strong>Exercise ${i + 1}</strong>
-          <p>${exercise.prompt}</p>
+        <div class="lesson-step-number">
+          ${currentLessonStep + 1}/${lessonSteps.length}
         </div>
-      `).join("")
-      : ""
-    }
-</div>
+      </div>
 
-    <div class="quiz">
-      <h3>📝 Quiz</h3>
-      <p>${lesson.question}</p>
+      <div class="lesson-step-progress">
+        <div style="width: ${((currentLessonStep + 1) / lessonSteps.length) * 100}%"></div>
+      </div>
 
-      ${lesson.options.map(option => `
-        <button class="option" onclick="checkAnswer('${option}', '${lesson.answer}', ${index})">
-          ${option}
+      ${stepContent}
+
+      <div class="lesson-player-actions">
+        <button onclick="previousLessonStep()" ${currentLessonStep === 0 ? "disabled" : ""}>
+          Back
         </button>
-      `).join("")}
 
-      <p class="result" id="result"></p>
+        <button onclick="nextLessonStep()">
+          ${currentLessonStep === lessonSteps.length - 1 ? "Finish" : "Next"}
+        </button>
+      </div>
     </div>
   `;
 }
+function nextLessonStep() {
+  if (currentLessonStep < lessonSteps.length - 1) {
+    currentLessonStep++;
+    renderLessonStep();
+    return;
+  }
 
+  const result = document.getElementById("result");
+
+  if (!result || result.textContent === "") {
+    alert("Complete the quiz before finishing this unit.");
+    return;
+  }
+
+  if (result.textContent.includes("Correcto")) {
+    lessonView.innerHTML += `
+      <div class="medal-box">
+        Unit completed successfully. Your progress has been updated.
+      </div>
+    `;
+
+    updateStats();
+    renderLessons();
+  } else {
+    alert("Answer the quiz correctly to finish this unit.");
+  }
+}
+
+function previousLessonStep() {
+  if (currentLessonStep > 0) {
+    currentLessonStep--;
+    renderLessonStep();
+  }
+}
 function speak(text) {
   const speech = new SpeechSynthesisUtterance(text);
   speech.lang = "en-US";
