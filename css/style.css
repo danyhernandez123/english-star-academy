@@ -4281,3 +4281,47 @@ body {
     grid-template-columns: 1fr;
   }
 }
+/* CERTIFICATE MOBILE FIX */
+
+@media (max-width: 768px) {
+  .certificate-section {
+    padding: 16px !important;
+  }
+
+  .premium-certificate {
+    padding: 10px;
+    border-radius: 24px;
+    overflow-x: auto;
+  }
+
+  .certificate-border {
+    min-width: 720px;
+    padding: 30px;
+    border-radius: 22px;
+  }
+
+  .certificate-logo {
+    width: 64px;
+    height: 64px;
+  }
+
+  .certificate-top h1 {
+    font-size: 26px;
+  }
+
+  .certificate-main h2 {
+    font-size: 34px;
+  }
+
+  .certificate-main h3 {
+    font-size: 24px;
+  }
+
+  .certificate-main p {
+    font-size: 15px;
+  }
+
+  .certificate-footer {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
