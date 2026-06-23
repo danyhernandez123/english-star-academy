@@ -9,6 +9,35 @@
 </head>
 
 <body>
+  <div class="access-screen" id="accessScreen">
+  <div class="access-card">
+    <img
+      src="assets/images/dybrox-logo.png"
+      alt="Dybrox Tech"
+      class="access-logo"
+    >
+
+    <span>Private Access</span>
+
+    <h1>English Star Academy</h1>
+
+    <p>
+      This platform is currently available only for authorized students.
+    </p>
+
+    <input
+      type="password"
+      id="accessPassword"
+      placeholder="Enter access password"
+    >
+
+    <button onclick="checkAccessPassword()">
+      Access Platform
+    </button>
+
+    <small id="accessMessage"></small>
+  </div>
+</div>
 <div class="welcome-overlay" id="welcomeOverlay">
   <div class="welcome-modal">
     <div class="welcome-logo">D</div>
@@ -547,11 +576,55 @@
       <h3>Level A0 - English Foundation</h3>
 
       <p class="certificate-description">
-        The student has completed the foundational English learning path,
-        including vocabulary, grammar, listening, speaking, reading,
-        writing and final assessment.
-      </p>
+  The student has successfully completed the English Star Academy
+  A0 Foundation Program, demonstrating proficiency in essential
+  communication skills and completing all required assessments.
+</p>
+
+<div class="certificate-skills">
+
+  <div class="skill-badge">Vocabulary</div>
+  <div class="skill-badge">Grammar</div>
+  <div class="skill-badge">Listening</div>
+  <div class="skill-badge">Speaking</div>
+  <div class="skill-badge">Reading</div>
+  <div class="skill-badge">Writing</div>
+
+</div>
+
+<div class="certificate-score">
+
+  <h4>Final Assessment</h4>
+
+  <strong id="certificateScore">
+    Passed
+  </strong>
+
+</div>
     </div>
+    <div class="certificate-signatures">
+
+  <div class="signature-box">
+    <div class="signature-line"></div>
+
+    <strong>Academic Director</strong>
+
+    <span>
+      English Star Academy
+    </span>
+  </div>
+
+  <div class="signature-box">
+    <div class="signature-line"></div>
+
+    <strong>Dybrox Tech</strong>
+
+    <span>
+      Issuing Organization
+    </span>
+  </div>
+
+</div>
 
     <div class="certificate-footer">
       <div>

@@ -1,76 +1,367 @@
 const a0Lessons = [
   {
-    id: 1,
-    module: "Module 1: Communication Basics",
-    unit: "Unit 1",
-    title: "Greetings & Farewells",
-    objective: "Learn basic greetings and farewells in English.",
+  id: 1,
+  module: "Module 1: Communication Basics",
+  unit: "Unit 1",
+  title: "Greetings & Farewells",
+  objective: `
+By the end of this lesson, you will be able to:
 
-    words: [
-      "Hello", "Hi", "Good morning", "Good afternoon",
-      "Good evening", "Goodbye", "Bye", "See you later",
-      "Nice to meet you", "Welcome"
-    ],
+• Greet people in formal and informal situations.
+• Say goodbye politely.
+• Introduce yourself using simple English.
+• Ask another person's name.
+• Respond naturally when meeting someone for the first time.
+• Use basic greetings in short real-life conversations.
+`,
 
-    phrase: "Hello. Good morning. Nice to meet you.",
-    question: "What does 'Hello' mean?",
-    options: ["Adiós", "Hola", "Gracias"],
-    answer: "Hola",
+  theory: `
+Greetings are essential in English because they help us start and end conversations politely.
 
-    grammar: [
-      "Hello.",
-      "Hi.",
-      "Good morning.",
-      "Goodbye.",
-      "See you later."
-    ],
+A greeting is a word or phrase we use when we meet someone.
 
-    speaking: [
-      "Hello.",
-      "Hi.",
-      "Good morning.",
-      "Good afternoon.",
-      "Good evening.",
-      "Goodbye.",
-      "See you later.",
-      "Nice to meet you."
-    ],
+Examples:
+Hello.
+Hi.
+Good morning.
+Good afternoon.
+Good evening.
 
-    reading: "Hello. My name is Tom. Good morning. Nice to meet you.",
+Some greetings are more formal. We use them with teachers, adults, customers, new people or in professional situations.
 
-    readingTexts: [
-      {
-        title: "Short Reading 1",
-        text: "Hello. My name is Tom. Good morning."
-      },
-      {
-        title: "Short Reading 2",
-        text: "Hi. My name is Anna. Good afternoon."
-      },
-      {
-        title: "Short Reading 3",
-        text: "Good evening. My name is Ben. Goodbye."
-      }
-    ],
+Formal greetings:
+Good morning.
+Good afternoon.
+Good evening.
 
-    writing: "Complete: Good _____.",
-    writingAnswer: "morning",
+Other greetings are more informal. We use them with friends, classmates, family members or people we already know.
 
-    writingExercises: [
-      {
-        prompt: "Complete: Good _____.",
-        answer: "morning"
-      },
-      {
-        prompt: "Complete: See you _____.",
-        answer: "later"
-      },
-      {
-        prompt: "Write a greeting in English.",
-        answer: "hello"
-      }
-    ]
+Informal greetings:
+Hi.
+Hello.
+
+When you meet someone for the first time, it is common to say:
+
+Nice to meet you.
+
+To introduce yourself, you can say:
+
+My name is Anna.
+I am Anna.
+
+To ask another person's name, you can say:
+
+What is your name?
+
+To answer, you can say:
+
+My name is Tom.
+
+When you leave or finish a conversation, you can say:
+
+Goodbye.
+Bye.
+See you later.
+
+Important difference:
+Use "Good evening" when you greet someone at night.
+Use "Good night" when you are leaving, going to sleep or ending the day.
+`,
+
+  words: [
+    "Hello = Hola",
+    "Hi = Hola informal",
+    "Good morning = Buenos días",
+    "Good afternoon = Buenas tardes",
+    "Good evening = Buenas noches como saludo",
+    "Good night = Buenas noches al despedirse o dormir",
+    "Goodbye = Adiós",
+    "Bye = Chau",
+    "See you later = Hasta luego",
+    "Nice to meet you = Mucho gusto",
+    "Name = Nombre",
+    "Friend = Amigo / amiga",
+    "Teacher = Profesor / profesora",
+    "Student = Estudiante",
+    "Classmate = Compañero / compañera de clase"
+  ],
+  vocabularyDetails: [
+  {
+    english: "Hello",
+    spanish: "Hola",
+    pronunciation: "he-lóu"
   },
+  {
+    english: "Hi",
+    spanish: "Hola",
+    pronunciation: "jai"
+  },
+  {
+    english: "Good morning",
+    spanish: "Buenos días",
+    pronunciation: "gud mór-ning"
+  },
+  {
+    english: "Good afternoon",
+    spanish: "Buenas tardes",
+    pronunciation: "gud af-ter-nún"
+  },
+  {
+    english: "Good evening",
+    spanish: "Buenas noches",
+    pronunciation: "gud ív-ning"
+  },
+  {
+    english: "Goodbye",
+    spanish: "Adiós",
+    pronunciation: "gud-bái"
+  },
+  {
+    english: "Nice to meet you",
+    spanish: "Mucho gusto",
+    pronunciation: "náis tu mít iu"
+  }
+],
+
+  phrase: "Hello. Good morning. Nice to meet you.",
+
+  question: "What does 'Hello' mean?",
+  options: ["Adiós", "Hola", "Gracias"],
+  answer: "Hola",
+
+  grammarExplanation: `
+In this lesson, we use short and simple sentences.
+
+A basic sentence in English usually has:
+
+Subject + verb + information
+
+Example:
+My name is Anna.
+
+"My name" is the subject.
+"is" is the verb.
+"Anna" is the information.
+
+Correct:
+My name is Anna.
+
+Incorrect:
+My name Anna.
+
+In English, we need the verb "is" in this sentence.
+
+You can also introduce yourself with:
+
+I am Anna.
+
+"I" means "yo".
+"am" is the verb used with "I".
+
+Correct:
+I am Anna.
+
+Incorrect:
+I Anna.
+
+To ask a name, use:
+
+What is your name?
+
+To answer, use:
+
+My name is Tom.
+`,
+
+  grammar: [
+    "Hello.",
+    "Hi.",
+    "Good morning.",
+    "Good afternoon.",
+    "Good evening.",
+    "Goodbye.",
+    "Bye.",
+    "See you later.",
+    "My name is Anna.",
+    "I am Anna.",
+    "What is your name?",
+    "Nice to meet you."
+  ],
+
+  speaking: [
+    "Hello.",
+    "Good morning.",
+    "My name is Anna.",
+    "What is your name?",
+    "Nice to meet you.",
+    "Nice to meet you too.",
+    "See you later.",
+    "Goodbye."
+  ],
+
+  dialogue: [
+    "A: Hello. Good morning.",
+    "B: Good morning.",
+    "A: My name is Anna. What is your name?",
+    "B: My name is Tom.",
+    "A: Nice to meet you.",
+    "B: Nice to meet you too.",
+    "A: See you later.",
+    "B: Goodbye."
+  ],
+
+  reading: `
+Hello.
+
+My name is Anna.
+
+I am a student.
+
+This is my teacher.
+
+Good morning, teacher.
+
+Nice to meet you.
+
+See you later.
+`,
+readingTranslation: [
+  {
+    english: "Hello.",
+    spanish: "Hola."
+  },
+  {
+    english: "My name is Anna.",
+    spanish: "Mi nombre es Anna."
+  },
+  {
+    english: "I am a student.",
+    spanish: "Soy estudiante."
+  },
+  {
+    english: "This is my teacher.",
+    spanish: "Este es mi profesor."
+  },
+  {
+    english: "Good morning, teacher.",
+    spanish: "Buenos días, profesor."
+  },
+  {
+    english: "Nice to meet you.",
+    spanish: "Mucho gusto."
+  },
+  {
+    english: "See you later.",
+    spanish: "Hasta luego."
+  }
+],
+
+  readingTexts: [
+    {
+      title: "Reading Practice 1",
+      text: "Hello. My name is Tom. I am a student. Nice to meet you."
+    },
+    {
+      title: "Reading Practice 2",
+      text: "Good morning. My name is Anna. This is my teacher."
+    },
+    {
+      title: "Reading Practice 3",
+      text: "Hi. I am Ben. Goodbye. See you later."
+    }
+  ],
+
+  writing: `
+Write a short introduction.
+
+My name is ______.
+
+I am a student.
+
+Nice to meet you.
+`,
+
+  writingAnswer: "name",
+
+  writingExercises: [
+    {
+      prompt: "Complete: Good _____.",
+      answer: "morning"
+    },
+    {
+      prompt: "Complete: Nice to _____ you.",
+      answer: "meet"
+    },
+    {
+      prompt: "Complete: My _____ is Anna.",
+      answer: "name"
+    },
+    {
+      prompt: "Write one greeting in English.",
+      answer: "hello"
+    },
+    {
+      prompt: "Write one farewell in English.",
+      answer: "goodbye"
+    }
+  ],
+  guidedWriting: [
+  {
+    label: "Sentence 1",
+    prompt: "Write your name.",
+    example: "My name is Anna."
+  },
+  {
+    label: "Sentence 2",
+    prompt: "Say you are a student.",
+    example: "I am a student."
+  },
+  {
+    label: "Sentence 3",
+    prompt: "Use a polite greeting.",
+    example: "Nice to meet you."
+  }
+],
+
+  commonMistakes: [
+    {
+      wrong: "Good night. Nice to meet you.",
+      correct: "Good evening. Nice to meet you.",
+      explanation: "Use 'Good evening' as a greeting. Use 'Good night' when you are leaving, going to sleep or ending the day."
+    },
+    {
+      wrong: "My name Anna.",
+      correct: "My name is Anna.",
+      explanation: "In English, this sentence needs the verb 'is'."
+    },
+    {
+      wrong: "I Anna.",
+      correct: "I am Anna.",
+      explanation: "Use 'am' with the subject 'I'."
+    },
+    {
+      wrong: "Nice meet you.",
+      correct: "Nice to meet you.",
+      explanation: "The correct expression includes the word 'to'."
+    }
+  ],
+
+  summary: [
+    "You learned formal and informal greetings.",
+    "You learned how to say goodbye politely.",
+    "You learned the difference between 'Good evening' and 'Good night'.",
+    "You learned how to introduce yourself using 'My name is...' and 'I am...'.",
+    "You learned how to ask another person's name.",
+    "You practiced a short real-life conversation."
+  ],
+  masteryCheck: [
+  "I can say hello and goodbye.",
+  "I can introduce myself.",
+  "I can ask another person's name.",
+  "I can understand basic greetings.",
+  "I can participate in a simple introduction."
+],
+},
 
   {
     id: 2,
@@ -609,5 +900,367 @@ const a0Lessons = [
 
     writing: "Write your introduction in English.",
     writingAnswer: "Hello. My name is Dany."
-  }
+  },
+{
+  id: 16,
+  module: "Module 5: Everyday Situations",
+  unit: "Unit 16",
+  title: "At the Store",
+  objective: "Learn basic phrases to buy simple products at a store.",
+
+  words: [
+    "Store", "Buy", "Bread", "Milk", "Water",
+    "Please", "Thank you", "Money", "Price", "Bag"
+  ],
+
+  phrase: "I am at the store. I want to buy bread and milk.",
+  question: "Where is the person?",
+  options: ["At the store", "At school", "At home"],
+  answer: "At the store",
+
+  grammar: [
+    "I want...",
+    "I want to buy...",
+    "I want water.",
+    "I want bread, please."
+  ],
+
+  speaking: [
+    "I want to buy bread.",
+    "I want water, please.",
+    "Thank you.",
+    "How much is it?"
+  ],
+
+  reading: "I am at the store. I want to buy bread, milk and water.",
+
+  writing: "Complete: I want to buy _____.",
+  writingAnswer: "bread"
+},
+{
+  id: 17,
+  module: "Module 5: Everyday Situations",
+  unit: "Unit 17",
+  title: "In the Classroom",
+  objective: "Learn classroom objects and simple classroom instructions.",
+
+  words: [
+    "Classroom", "Teacher", "Student", "Book", "Pen",
+    "Board", "Desk", "Chair", "Open", "Close"
+  ],
+
+  phrase: "I am in the classroom. I have a book and a pen.",
+  question: "Where is the person?",
+  options: ["In the classroom", "At the park", "At the store"],
+  answer: "In the classroom",
+
+  grammar: [
+    "I have...",
+    "Open your book.",
+    "Close your notebook.",
+    "This is my pen."
+  ],
+
+  speaking: [
+    "Open your book.",
+    "Close your notebook.",
+    "I have a pen.",
+    "This is my classroom."
+  ],
+
+  reading: "This is my classroom. I have a book, a pen and a notebook.",
+
+  writing: "Complete: I have a _____.",
+  writingAnswer: "pen"
+},
+{
+  id: 18,
+  module: "Module 5: Everyday Situations",
+  unit: "Unit 18",
+  title: "My Weekend",
+  objective: "Learn how to talk about simple weekend activities.",
+
+  words: [
+    "Weekend", "Saturday", "Sunday", "Play", "Read",
+    "Watch", "Music", "Movie", "Football", "Rest"
+  ],
+
+  phrase: "On Saturday, I play football. On Sunday, I read a book.",
+  question: "What does the person do on Sunday?",
+  options: ["Read a book", "Play football", "Go to work"],
+  answer: "Read a book",
+
+  grammar: [
+    "On Saturday...",
+    "On Sunday...",
+    "I play...",
+    "I read...",
+    "I watch..."
+  ],
+
+  speaking: [
+    "On Saturday, I play football.",
+    "On Sunday, I read a book.",
+    "I watch a movie.",
+    "I listen to music."
+  ],
+
+  reading: "My weekend is simple. On Saturday, I play football. On Sunday, I read a book.",
+
+  writing: "Complete: On Sunday, I read a _____.",
+  writingAnswer: "book"
+},
+{
+  id: 19,
+  module: "Module 6: My Environment",
+  unit: "Unit 19",
+  title: "My City",
+  objective: "Learn how to describe your city with simple adjectives.",
+
+  words: [
+    "City", "Big", "Small", "Beautiful", "Street",
+    "Park", "House", "School", "Store", "Hospital"
+  ],
+
+  phrase: "I live in Lima. My city is big and beautiful.",
+  question: "Where does the person live?",
+  options: ["Lima", "Paris", "Toronto"],
+  answer: "Lima",
+
+  grammar: [
+    "I live in...",
+    "My city is...",
+    "It is big.",
+    "It is beautiful."
+  ],
+
+  speaking: [
+    "I live in Lima.",
+    "My city is big.",
+    "My city is beautiful.",
+    "There is a park."
+  ],
+
+  reading: "I live in Lima. My city is big and beautiful. There is a park near my house.",
+
+  writing: "Complete: My city is _____.",
+  writingAnswer: "beautiful"
+},
+{
+  id: 20,
+  module: "Module 6: My Environment",
+  unit: "Unit 20",
+  title: "My English Goal",
+  objective: "Learn how to talk about your English learning goal.",
+
+  words: [
+    "Goal", "English", "Study", "Speak", "Listen",
+    "Read", "Write", "Practice", "Every day", "Improve"
+  ],
+
+  phrase: "I study English every day. My goal is to speak English well.",
+  question: "What is the person's goal?",
+  options: ["Speak English well", "Play guitar", "Watch movies"],
+  answer: "Speak English well",
+
+  grammar: [
+    "My goal is...",
+    "I study English.",
+    "I practice every day.",
+    "I want to improve."
+  ],
+
+  speaking: [
+    "My goal is to speak English.",
+    "I study every day.",
+    "I want to improve.",
+    "I practice listening."
+  ],
+
+  reading: "I study English every day. My goal is to speak English well. I practice listening and speaking.",
+
+  writing: "Complete: My goal is to speak English _____.",
+  writingAnswer: "well"
+},
+{
+  id: 21,
+  module: "Module 6: My Environment",
+  unit: "Unit 21",
+  title: "Weather",
+  objective: "Learn how to describe basic weather conditions.",
+
+  words: [
+    "Weather", "Sunny", "Rainy", "Cloudy", "Hot",
+    "Cold", "Windy", "Today", "Morning", "Afternoon"
+  ],
+
+  phrase: "Today is sunny. It is hot in the afternoon.",
+  question: "How is the weather today?",
+  options: ["Sunny", "Rainy", "Cold"],
+  answer: "Sunny",
+
+  grammar: [
+    "Today is...",
+    "It is sunny.",
+    "It is hot.",
+    "It is cold."
+  ],
+
+  speaking: [
+    "Today is sunny.",
+    "It is hot.",
+    "It is rainy.",
+    "It is cold today."
+  ],
+
+  reading: "Today is sunny. It is hot in the afternoon. I drink water.",
+
+  writing: "Complete: Today is _____.",
+  writingAnswer: "sunny"
+},
+{
+  id: 22,
+  module: "Module 7: People and Jobs",
+  unit: "Unit 22",
+  title: "Jobs",
+  objective: "Learn common jobs and describe people in your family.",
+
+  words: [
+    "Doctor", "Teacher", "Engineer", "Nurse", "Chef",
+    "Programmer", "Police officer", "Actor", "Job", "Work"
+  ],
+
+  phrase: "My father is a doctor. My mother is a teacher.",
+  question: "What is his father?",
+  options: ["Doctor", "Teacher", "Engineer"],
+  answer: "Doctor",
+
+  grammar: [
+    "He is a...",
+    "She is a...",
+    "My father is...",
+    "My mother is..."
+  ],
+
+  speaking: [
+    "My father is a doctor.",
+    "My mother is a teacher.",
+    "He is an engineer.",
+    "She is a nurse."
+  ],
+
+  reading: "My father is a doctor. My mother is a teacher. They work every day.",
+
+  writing: "Complete: My father is a _____.",
+  writingAnswer: "doctor"
+},
+{
+  id: 23,
+  module: "Module 7: People and Jobs",
+  unit: "Unit 23",
+  title: "People Description",
+  objective: "Learn simple words to describe people.",
+
+  words: [
+    "Tall", "Short", "Happy", "Sad", "Nice",
+    "Young", "Old", "Strong", "Smart", "Friendly"
+  ],
+
+  phrase: "My teacher is nice. My friend is happy.",
+  question: "How is the teacher?",
+  options: ["Nice", "Sad", "Cold"],
+  answer: "Nice",
+
+  grammar: [
+    "He is happy.",
+    "She is nice.",
+    "My friend is tall.",
+    "My teacher is friendly."
+  ],
+
+  speaking: [
+    "My teacher is nice.",
+    "My friend is happy.",
+    "He is tall.",
+    "She is smart."
+  ],
+
+  reading: "My teacher is nice. My friend is happy and friendly.",
+
+  writing: "Complete: My teacher is _____.",
+  writingAnswer: "nice"
+},
+{
+  id: 24,
+  module: "Module 8: Technology and Study",
+  unit: "Unit 24",
+  title: "Technology",
+  objective: "Learn basic technology vocabulary for studying English online.",
+
+  words: [
+    "Laptop", "Phone", "Internet", "Website", "Application",
+    "Password", "Software", "Online", "Screen", "Keyboard"
+  ],
+
+  phrase: "I have a laptop and a phone. I study English online.",
+  question: "What does the person have?",
+  options: ["A laptop and a phone", "A book and a pen", "A car and a bike"],
+  answer: "A laptop and a phone",
+
+  grammar: [
+    "I have...",
+    "I use...",
+    "I study online.",
+    "I use my phone."
+  ],
+
+  speaking: [
+    "I have a laptop.",
+    "I use my phone.",
+    "I study English online.",
+    "I use a website."
+  ],
+
+  reading: "I have a laptop and a phone. I study English online every day.",
+
+  writing: "Complete: I study English _____.",
+  writingAnswer: "online"
+},
+{
+  id: 25,
+  module: "Module 8: Technology and Study",
+  unit: "Unit 25",
+  title: "Review A0 Part 1",
+  objective: "Review key A0 vocabulary and grammar from the first part of the course.",
+
+  words: [
+    "Hello", "Name", "Student", "Family", "Book",
+    "Water", "City", "Weather", "Teacher", "Goal"
+  ],
+
+  phrase: "Hello. My name is Dany. I am a student. I study English every day.",
+  question: "What does the person study?",
+  options: ["English", "French", "Music"],
+  answer: "English",
+
+  grammar: [
+    "My name is...",
+    "I am...",
+    "I have...",
+    "I study...",
+    "My goal is..."
+  ],
+
+  speaking: [
+    "My name is Dany.",
+    "I am a student.",
+    "I study English.",
+    "My goal is to improve."
+  ],
+
+  reading: "Hello. My name is Dany. I am a student. I study English every day. My goal is to improve.",
+
+  writing: "Complete: I study _____ every day.",
+  writingAnswer: "English"
+}
 ];

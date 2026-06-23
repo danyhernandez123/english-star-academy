@@ -173,5 +173,40 @@ const a0Listening = [
   question: "What does the person do after breakfast?",
   options: ["Go to school", "Go to sleep", "Watch TV"],
   answer: "Go to school"
+},
+{
+  title: "Listening A0-26: At the Store",
+  text: "I am at the store. I buy bread, milk and water.",
+  question: "Where is the person?",
+  options: ["At the store", "At school", "At home"],
+  answer: "At the store"
+},
+{
+  title: "Listening A0-27: In the Classroom",
+  text: "There is a teacher, a student, a book and a pen in the classroom.",
+  question: "What place is mentioned?",
+  options: ["Classroom", "Restaurant", "Park"],
+  answer: "Classroom"
+},
+{
+  title: "Listening A0-28: My Weekend",
+  text: "On Saturday, I play football. On Sunday, I read a book.",
+  question: "What does the person do on Sunday?",
+  options: ["Read a book", "Play football", "Go to work"],
+  answer: "Read a book"
+},
+{
+  title: "Listening A0-29: My City",
+  text: "I live in Lima. My city is big and beautiful.",
+  question: "Where does the person live?",
+  options: ["Lima", "Paris", "Toronto"],
+  answer: "Lima"
+},
+{
+  title: "Listening A0-30: My English Goal",
+  text: "I study English every day. My goal is to speak English well.",
+  question: "What is the person's goal?",
+  options: ["Speak English well", "Play guitar", "Watch movies"],
+  answer: "Speak English well"
 }
 ];

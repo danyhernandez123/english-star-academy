@@ -18,12 +18,17 @@ let currentLessonStep = 0;
 
 const lessonSteps = [
   "Objective",
+  "Theory",
   "Vocabulary",
   "Grammar",
+  "Dialogue",
   "Listening",
   "Speaking",
   "Reading",
   "Writing",
+  "Common Mistakes",
+  "Summary",
+  "Mastery Check",
   "Quiz"
 ];
 
@@ -416,36 +421,122 @@ function renderLessonStep() {
       </div>
     `;
   }
+  if (step === "Theory") {
+  stepContent = `
+    <div class="lesson-step-card">
+      <span class="section-label">Theory</span>
+
+      <h3>Lesson Explanation</h3>
+
+      <div class="theory-box">
+        ${lesson.theory || "Theory coming soon."}
+      </div>
+    </div>
+  `;
+}
 
   if (step === "Vocabulary") {
-    stepContent = `
-      <div class="lesson-step-card">
-        <span class="section-label">Vocabulary</span>
-        <h3>Study these words</h3>
+  const vocabularySource = lesson.vocabularyDetails || lesson.words.map(item => {
+    const parts = item.split("=");
+    return {
+      english: parts[0].trim(),
+      spanish: parts[1] ? parts[1].trim() : "",
+      pronunciation: ""
+    };
+  });
 
-        <div class="vocabulary-grid">
-          ${lesson.words.map(word => `
-            <div class="vocabulary-card">
-              ${word}
-            </div>
-          `).join("")}
-        </div>
+  stepContent = `
+    <div class="lesson-step-card">
+      <span class="section-label">Vocabulary</span>
+      <h3>Study the words</h3>
+
+      <div class="vocabulary-grid">
+        ${vocabularySource.map(item => `
+          <div class="vocabulary-card">
+            <h3>${item.english}</h3>
+
+            <p>${item.spanish}</p>
+
+            ${
+              item.pronunciation
+                ? `<small class="pronunciation-text">Pronunciation: ${item.pronunciation}</small>`
+                : ""
+            }
+
+            <button
+              class="mini-audio-btn"
+              onclick="speak('${item.english}')">
+              Listen
+            </button>
+          </div>
+        `).join("")}
       </div>
-    `;
-  }
+    </div>
+  `;
+}
 
   if (step === "Grammar") {
-    stepContent = `
-      <div class="lesson-step-card">
-        <span class="section-label">Grammar</span>
-        <h3>Useful structures</h3>
+  stepContent = `
+    <div class="lesson-step-card">
+      <span class="section-label">Grammar</span>
 
-        <ul class="lesson-step-list">
-          ${lesson.grammar.map(item => `<li>${item}</li>`).join("")}
-        </ul>
+      <h3>Grammar Explanation</h3>
+
+      <div class="theory-box">
+        ${lesson.grammarExplanation || "Grammar explanation coming soon."}
       </div>
-    `;
-  }
+
+      <h3>Useful Examples</h3>
+
+      <div class="grammar-audio-list">
+        ${lesson.grammar.map(item => `
+          <div class="grammar-audio-item">
+            <p>${item}</p>
+
+            <button
+              class="mini-audio-btn"
+              onclick="speak('${item}')">
+              Listen
+            </button>
+          </div>
+        `).join("")}
+      </div>
+    </div>
+  `;
+}
+  if (step === "Dialogue") {
+  stepContent = `
+    <div class="lesson-step-card">
+      <span class="section-label">Real Conversation</span>
+
+      <h3>Practice Dialogue</h3>
+
+      <div class="dialogue-box">
+        ${
+          lesson.dialogue
+            ? lesson.dialogue.map(line => `
+              <div class="dialogue-line">
+                <p>${line}</p>
+
+                <button
+                  class="mini-audio-btn"
+                  onclick="speak('${line.replace("A:", "").replace("B:", "").trim()}')">
+                  Listen
+                </button>
+              </div>
+            `).join("")
+            : "<p>Dialogue coming soon.</p>"
+        }
+      </div>
+
+      <button
+        class="audio-btn"
+        onclick="speak('${lesson.dialogue ? lesson.dialogue.join(". ") : lesson.phrase}')">
+        Listen Full Dialogue
+      </button>
+    </div>
+  `;
+}
 
   if (step === "Listening") {
   stepContent = `
@@ -481,28 +572,38 @@ function renderLessonStep() {
     <div class="lesson-step-card">
       <span class="section-label">Speaking Practice</span>
 
-      <h3>Pronunciation Exercise</h3>
+      <h3>Pronunciation Practice</h3>
 
-      <div class="speaking-card">
-        <p class="speaking-phrase">
-          ${lesson.phrase}
-        </p>
+      <p>
+        Listen carefully and repeat each phrase clearly.
+      </p>
 
-        <button
-          class="audio-btn"
-          onclick="speak('${lesson.phrase}')">
-          Listen Pronunciation
-        </button>
+      <div class="speaking-practice-list">
+        ${
+          lesson.speaking
+            ? lesson.speaking.map(phrase => `
+              <div class="speaking-practice-item">
+                <p>${phrase}</p>
+
+                <button
+                  class="audio-btn"
+                  onclick="speak('${phrase}')">
+                  Listen
+                </button>
+              </div>
+            `).join("")
+            : `<p>${lesson.phrase}</p>`
+        }
       </div>
 
       <div class="speaking-tips">
-        <h4>Tips</h4>
+        <h4>Practice tips</h4>
 
         <ul>
-          <li>Listen carefully.</li>
+          <li>Listen first.</li>
           <li>Repeat slowly.</li>
-          <li>Practice 3 times.</li>
-          <li>Focus on pronunciation.</li>
+          <li>Practice each phrase three times.</li>
+          <li>Focus on clear pronunciation.</li>
         </ul>
       </div>
     </div>
@@ -510,14 +611,53 @@ function renderLessonStep() {
 }
 
   if (step === "Reading") {
+  const readingContent =
+    lesson.readingTranslation || [];
+
   stepContent = `
     <div class="lesson-step-card">
-      <span class="section-label">Reading Practice</span>
-      <h3>Read and understand</h3>
+      <span class="section-label">
+        Reading Practice
+      </span>
 
-      <p class="reading-box">${lesson.reading}</p>
+      <h3>
+        Read, listen and understand
+      </h3>
+
+      <div class="reading-audio-box">
+
+        ${
+          readingContent.length > 0
+            ? readingContent.map(item => `
+              <div class="reading-line">
+
+                <div class="reading-text-group">
+                  <p class="reading-english">
+                    ${item.english}
+                  </p>
+
+                  <p class="reading-spanish">
+                    ${item.spanish}
+                  </p>
+                </div>
+
+                <button
+                  class="mini-audio-btn"
+                  onclick="speak('${item.english}')">
+                  Listen
+                </button>
+
+              </div>
+            `).join("")
+            : `
+              <p>${lesson.reading}</p>
+            `
+        }
+
+      </div>
 
       <div class="reading-question-box">
+
         <h3>${lesson.question}</h3>
 
         ${lesson.options.map(option => `
@@ -529,6 +669,7 @@ function renderLessonStep() {
         `).join("")}
 
         <p id="lessonReadingResult" class="result"></p>
+
       </div>
     </div>
   `;
@@ -554,12 +695,110 @@ function renderLessonStep() {
         onclick="checkLessonWriting()">
         Check answer
       </button>
+      
 
       <p id="lessonWritingResult" class="result"></p>
+      <div class="guided-writing-box">
+  <h3>Guided Writing</h3>
+
+  ${
+    lesson.guidedWriting
+      ? lesson.guidedWriting.map(item => `
+        <div class="guided-writing-item">
+          <strong>${item.label}</strong>
+          <p>${item.prompt}</p>
+          <small>Example: ${item.example}</small>
+        </div>
+      `).join("")
+      : ""
+  }
+</div>
     </div>
   `;
 }
+if (step === "Common Mistakes") {
+  stepContent = `
+    <div class="lesson-step-card">
+      <span class="section-label">Common Mistakes</span>
 
+      <h3>Learn from mistakes</h3>
+
+      <div class="mistakes-list">
+        ${
+          lesson.commonMistakes
+            ? lesson.commonMistakes.map(item => `
+              <div class="mistake-card">
+                <p><strong>Incorrect:</strong> ${item.wrong}</p>
+                <p><strong>Correct:</strong> ${item.correct}</p>
+                <small>${item.explanation}</small>
+              </div>
+            `).join("")
+            : "<p>No common mistakes for this lesson yet.</p>"
+        }
+      </div>
+    </div>
+  `;
+}
+if (step === "Summary") {
+  stepContent = `
+    <div class="lesson-step-card">
+      <span class="section-label">Lesson Summary</span>
+
+      <h3>What did you learn?</h3>
+
+      <div class="summary-box">
+        ${
+          lesson.summary
+            ? lesson.summary.map(item => `
+              <p>${item}</p>
+            `).join("")
+            : `
+              <p>${lesson.title}</p>
+              <p>Key vocabulary</p>
+              <p>Grammar structures</p>
+              <p>Listening practice</p>
+              <p>Reading practice</p>
+              <p>Writing practice</p>
+            `
+        }
+      </div>
+    </div>
+  `;
+}
+if (step === "Mastery Check") {
+  stepContent = `
+    <div class="lesson-step-card">
+
+      <span class="section-label">
+        Mastery Check
+      </span>
+
+      <h3>
+        Can you do these things?
+      </h3>
+
+      <div class="mastery-list">
+
+        ${
+          lesson.masteryCheck
+            ? lesson.masteryCheck.map(item => `
+              <div class="mastery-item">
+                ✓ ${item}
+              </div>
+            `).join("")
+            : ""
+        }
+
+      </div>
+
+      <p class="mastery-message">
+        If you can confidently complete all of these tasks,
+        you are ready for the Unit Quiz.
+      </p>
+
+    </div>
+  `;
+}
   if (step === "Quiz") {
     stepContent = `
       <div class="lesson-step-card">
@@ -1879,5 +2118,31 @@ window.addEventListener("DOMContentLoaded", function () {
 
   if (welcomeOverlay && welcomeSeen === "true") {
     welcomeOverlay.classList.add("hide");
+  }
+});
+const platformPassword = "DYBROX2026";
+
+function checkAccessPassword() {
+  const input = document.getElementById("accessPassword");
+  const message = document.getElementById("accessMessage");
+  const accessScreen = document.getElementById("accessScreen");
+
+  if (!input || !message || !accessScreen) return;
+
+  if (input.value.trim() === platformPassword) {
+    localStorage.setItem("platformAccess", "granted");
+    accessScreen.classList.add("hide");
+  } else {
+    message.textContent = "Access denied. Please check your password.";
+    message.style.color = "#dc2626";
+  }
+}
+
+window.addEventListener("DOMContentLoaded", function () {
+  const accessScreen = document.getElementById("accessScreen");
+  const accessGranted = localStorage.getItem("platformAccess");
+
+  if (accessScreen && accessGranted === "granted") {
+    accessScreen.classList.add("hide");
   }
 });
