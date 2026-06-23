@@ -438,77 +438,117 @@ function renderLessonStep() {
   }
 
   if (step === "Listening") {
-    stepContent = `
-      <div class="lesson-step-card">
-        <span class="section-label">Listening</span>
-        <h3>Listen and repeat</h3>
-        <p>${lesson.phrase}</p>
+  stepContent = `
+    <div class="lesson-step-card">
+      <span class="section-label">Listening Practice</span>
+      <h3>Listen and answer</h3>
 
-        <button class="audio-btn" onclick="speak('${lesson.phrase}')">
-          Listen
-        </button>
+      <p class="listening-script">${lesson.phrase}</p>
+
+      <button class="audio-btn" onclick="speak('${lesson.phrase}')">
+        Listen
+      </button>
+
+      <div class="reading-question-box">
+        <h3>${lesson.question}</h3>
+
+        ${lesson.options.map(option => `
+          <button
+            class="option listening-practice-option"
+            onclick="checkLessonListening('${option}', '${lesson.answer}')">
+            ${option}
+          </button>
+        `).join("")}
+
+        <p id="lessonListeningResult" class="result"></p>
       </div>
-    `;
-  }
+    </div>
+  `;
+}
 
   if (step === "Speaking") {
-    stepContent = `
-      <div class="lesson-step-card">
-        <span class="section-label">Speaking</span>
-        <h3>Repeat this phrase</h3>
-        <h2>"${lesson.phrase}"</h2>
-        <p>Practice slowly and clearly.</p>
+  stepContent = `
+    <div class="lesson-step-card">
+      <span class="section-label">Speaking Practice</span>
+
+      <h3>Pronunciation Exercise</h3>
+
+      <div class="speaking-card">
+        <p class="speaking-phrase">
+          ${lesson.phrase}
+        </p>
+
+        <button
+          class="audio-btn"
+          onclick="speak('${lesson.phrase}')">
+          Listen Pronunciation
+        </button>
       </div>
-    `;
-  }
+
+      <div class="speaking-tips">
+        <h4>Tips</h4>
+
+        <ul>
+          <li>Listen carefully.</li>
+          <li>Repeat slowly.</li>
+          <li>Practice 3 times.</li>
+          <li>Focus on pronunciation.</li>
+        </ul>
+      </div>
+    </div>
+  `;
+}
 
   if (step === "Reading") {
-    stepContent = `
-      <div class="lesson-step-card">
-        <span class="section-label">Reading</span>
-        <h3>Read the short text</h3>
+  stepContent = `
+    <div class="lesson-step-card">
+      <span class="section-label">Reading Practice</span>
+      <h3>Read and understand</h3>
 
-        <p class="reading-box">${lesson.reading}</p>
+      <p class="reading-box">${lesson.reading}</p>
 
-        <div class="reading-texts">
-          ${
-            lesson.readingTexts
-              ? lesson.readingTexts.map(reading => `
-                <div class="reading-text-card">
-                  <strong>${reading.title}</strong>
-                  <p>${reading.text}</p>
-                </div>
-              `).join("")
-              : ""
-          }
-        </div>
+      <div class="reading-question-box">
+        <h3>${lesson.question}</h3>
+
+        ${lesson.options.map(option => `
+          <button
+            class="option reading-practice-option"
+            onclick="checkLessonReading('${option}', '${lesson.answer}')">
+            ${option}
+          </button>
+        `).join("")}
+
+        <p id="lessonReadingResult" class="result"></p>
       </div>
-    `;
-  }
+    </div>
+  `;
+}
 
   if (step === "Writing") {
-    stepContent = `
-      <div class="lesson-step-card">
-        <span class="section-label">Writing</span>
-        <h3>Writing Practice</h3>
+  stepContent = `
+    <div class="lesson-step-card">
+      <span class="section-label">Writing Practice</span>
+      <h3>Complete the sentence</h3>
 
-        <p>${lesson.writing}</p>
+      <p class="writing-task">${lesson.writing}</p>
 
-        <div class="writing-exercises">
-          ${
-            lesson.writingExercises
-              ? lesson.writingExercises.map((exercise, i) => `
-                <div class="writing-exercise-card">
-                  <strong>Exercise ${i + 1}</strong>
-                  <p>${exercise.prompt}</p>
-                </div>
-              `).join("")
-              : ""
-          }
-        </div>
-      </div>
-    `;
-  }
+      <input
+        type="text"
+        id="lessonWritingInput"
+        class="lesson-writing-input"
+        placeholder="Write your answer here"
+      >
+
+      <button
+        class="lesson-writing-btn"
+        onclick="checkLessonWriting()">
+        Check answer
+      </button>
+
+      <p id="lessonWritingResult" class="result"></p>
+    </div>
+  `;
+}
 
   if (step === "Quiz") {
     stepContent = `
@@ -531,12 +571,26 @@ function renderLessonStep() {
     <div class="lesson-player">
       <div class="lesson-player-header">
         <div>
-          <span class="tag">${lesson.module}</span>
-          <span class="tag">${lesson.unit}</span>
+  <span class="tag">${lesson.module}</span>
+  <span class="tag">${lesson.unit}</span>
 
-          <h2>${lesson.title}</h2>
-          <p>Step ${currentLessonStep + 1} of ${lessonSteps.length}: ${step}</p>
-        </div>
+  <h2>
+    ${lesson.title}
+  </h2>
+
+  <p class="step-label">
+    Step ${currentLessonStep + 1}
+    of
+    ${lessonSteps.length}
+  </p>
+
+  <p class="completion-label">
+    ${Math.round(
+      ((currentLessonStep + 1) /
+      lessonSteps.length) * 100
+    )}% Complete
+  </p>
+</div>
 
         <div class="lesson-step-number">
           ${currentLessonStep + 1}/${lessonSteps.length}
@@ -546,6 +600,13 @@ function renderLessonStep() {
       <div class="lesson-step-progress">
         <div style="width: ${((currentLessonStep + 1) / lessonSteps.length) * 100}%"></div>
       </div>
+      <div class="lesson-step-tabs">
+  ${lessonSteps.map((item, index) => `
+    <div class="lesson-step-tab ${index <= currentLessonStep ? "active" : ""}">
+      ${index + 1}
+    </div>
+  `).join("")}
+</div>
 
       ${stepContent}
 
@@ -561,6 +622,74 @@ function renderLessonStep() {
     </div>
   `;
 }
+function checkLessonListening(option, answer) {
+  const result = document.getElementById("lessonListeningResult");
+  const options = document.querySelectorAll(".listening-practice-option");
+
+  options.forEach(button => {
+    button.disabled = true;
+
+    if (button.textContent.trim() === answer) {
+      button.classList.add("correct-option");
+    }
+
+    if (button.textContent.trim() === option && option !== answer) {
+      button.classList.add("wrong-option");
+    }
+  });
+
+  if (option === answer) {
+    result.textContent = "Correct. Good listening practice.";
+    result.style.color = "#16a34a";
+  } else {
+    result.textContent = "Incorrect. Listen again and review.";
+    result.style.color = "#dc2626";
+  }
+}
+function checkLessonReading(option, answer) {
+  const result = document.getElementById("lessonReadingResult");
+  const options = document.querySelectorAll(".reading-practice-option");
+
+  options.forEach(button => {
+    button.disabled = true;
+
+    if (button.textContent.trim() === answer) {
+      button.classList.add("correct-option");
+    }
+
+    if (button.textContent.trim() === option && option !== answer) {
+      button.classList.add("wrong-option");
+    }
+  });
+
+  if (option === answer) {
+    result.textContent = "Correct. Good reading comprehension.";
+    result.style.color = "#16a34a";
+  } else {
+    result.textContent = "Incorrect. Read the text again.";
+    result.style.color = "#dc2626";
+  }
+}
+function checkLessonWriting() {
+  const lesson = lessons[currentLessonIndex];
+
+  const input = document
+    .getElementById("lessonWritingInput")
+    .value
+    .trim()
+    .toLowerCase();
+
+  const result = document.getElementById("lessonWritingResult");
+  const correctAnswer = lesson.writingAnswer.toLowerCase();
+
+  if (input === correctAnswer || input.includes(correctAnswer)) {
+    result.textContent = "Correct. Good writing practice.";
+    result.style.color = "#16a34a";
+  } else {
+    result.textContent = "Review the sentence and try again.";
+    result.style.color = "#dc2626";
+  }
+}
 function nextLessonStep() {
   if (currentLessonStep < lessonSteps.length - 1) {
     currentLessonStep++;
@@ -575,18 +704,53 @@ function nextLessonStep() {
     return;
   }
 
-  if (result.textContent.includes("Correcto")) {
-    lessonView.innerHTML += `
-      <div class="medal-box">
-        Unit completed successfully. Your progress has been updated.
-      </div>
-    `;
-
-    updateStats();
-    renderLessons();
+  if (result.textContent.includes("Correct")) {
+    showUnitCompleted();
   } else {
     alert("Answer the quiz correctly to finish this unit.");
   }
+}
+
+function showUnitCompleted() {
+  const lesson = lessons[currentLessonIndex];
+  const nextIndex = currentLessonIndex + 1;
+  const hasNextLesson = nextIndex < lessons.length;
+
+  const buttonAction = hasNextLesson
+    ? `openLesson(${nextIndex})`
+    : `showTab('dashboard')`;
+
+  const buttonText = hasNextLesson
+    ? "Continue to Next Unit"
+    : "Back to Dashboard";
+
+  lessonView.innerHTML = `
+    <div class="unit-completed-card">
+      <span class="section-label">Unit Completed</span>
+
+      <h2>${lesson.unit}: ${lesson.title}</h2>
+
+      <p>
+        Great work. Your progress has been saved and the next unit is ready.
+      </p>
+
+      <div class="unit-completed-stats">
+        <div>
+          <strong>+50</strong>
+          <span>XP Earned</span>
+        </div>
+
+        <div>
+          <strong>${state.completed.length}/${lessons.length}</strong>
+          <span>Units Completed</span>
+        </div>
+      </div>
+
+      <button onclick="${buttonAction}">
+        ${buttonText}
+      </button>
+    </div>
+  `;
 }
 
 function previousLessonStep() {
@@ -595,6 +759,7 @@ function previousLessonStep() {
     renderLessonStep();
   }
 }
+
 function speak(text) {
   const speech = new SpeechSynthesisUtterance(text);
   speech.lang = "en-US";
@@ -604,10 +769,23 @@ function speak(text) {
 
 function checkAnswer(option, answer, index) {
   const result = document.getElementById("result");
+  const options = document.querySelectorAll(".option");
+
+  options.forEach(button => {
+    button.disabled = true;
+
+    if (button.textContent.trim() === answer) {
+      button.classList.add("correct-option");
+    }
+
+    if (button.textContent.trim() === option && option !== answer) {
+      button.classList.add("wrong-option");
+    }
+  });
 
   if (option === answer) {
-    result.textContent = "Correcto ⭐ +50 XP";
-    result.style.color = "green";
+    result.textContent = "Correct. Unit completed. +50 XP";
+    result.style.color = "#16a34a";
 
     if (!state.completed.includes(index)) {
       state.completed.push(index);
@@ -629,18 +807,10 @@ function checkAnswer(option, answer, index) {
       saveState();
       updateStats();
       renderLessons();
-
-      if (state.completed.length === lessons.length) {
-        lessonView.innerHTML += `
-          <div class="medal-box">
-            🏆 Felicidades, completaste el Módulo 1: Welcome to English.
-          </div>
-        `;
-      }
     }
   } else {
-    result.textContent = "Inténtalo otra vez.";
-    result.style.color = "red";
+    result.textContent = "Incorrect. Review the lesson and try again.";
+    result.style.color = "#dc2626";
   }
 }
 function renderMedals() {
