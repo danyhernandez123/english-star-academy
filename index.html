@@ -210,6 +210,21 @@
           <p>Day Streak</p>
         </div>
       </div>
+      <div class="continue-learning-card">
+  <span class="section-label">Continue Learning</span>
+
+  <h3 id="nextLessonTitleCard">
+    Loading...
+  </h3>
+
+  <p id="nextLessonObjectiveCard">
+    Loading...
+  </p>
+
+  <button onclick="openNextLesson()">
+    Continue
+  </button>
+</div>
       <div class="dashboard-bottom">
 
         <div class="next-lesson-card">
@@ -503,22 +518,61 @@
       <h2>Certificate A0</h2>
       <p>Cuando completes el nivel A0, podrás generar tu certificado.</p>
 
-      <div class="certificate-card" id="certificateCard">
+      <div class="certificate-card premium-certificate" id="certificateCard">
+
+  <div class="certificate-border">
+
+    <div class="certificate-top">
+      <img
+        src="assets/images/dybrox-logo.png"
+        alt="Dybrox Tech"
+        class="certificate-logo"
+      >
+
+      <div>
         <h1>English Star Academy</h1>
-        <h2>Certificate of Completion</h2>
-
-        <p>This certificate is proudly presented to</p>
-
-        <h3 id="certificateName">Student Name</h3>
-
-        <p>for completing</p>
-
-        <h2>Level A0 - Absolute Beginner</h2>
-
-        <p class="certificate-date" id="certificateDate"></p>
-
-        <h4>Learn English. Shine Everywhere.</h4>
+        <p>by Dybrox Tech</p>
       </div>
+    </div>
+
+    <div class="certificate-main">
+      <span>Certificate of Achievement</span>
+
+      <p>This certificate is proudly presented to</p>
+
+      <h2 id="certificateName">Student Name</h2>
+
+      <p>for successfully completing</p>
+
+      <h3>Level A0 - English Foundation</h3>
+
+      <p class="certificate-description">
+        The student has completed the foundational English learning path,
+        including vocabulary, grammar, listening, speaking, reading,
+        writing and final assessment.
+      </p>
+    </div>
+
+    <div class="certificate-footer">
+      <div>
+        <strong id="certificateDate">Date</strong>
+        <span>Completion Date</span>
+      </div>
+
+      <div>
+        <strong id="certificateId">ESA-A0-0001</strong>
+        <span>Certificate ID</span>
+      </div>
+
+      <div>
+        <strong>Dybrox Tech</strong>
+        <span>Issued by</span>
+      </div>
+    </div>
+
+  </div>
+
+</div>
 
       <button class="certificate-btn" onclick="downloadCertificate()">
         Descargar certificado

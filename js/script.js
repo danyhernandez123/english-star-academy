@@ -218,6 +218,16 @@ function updateStats() {
   if (nextLessonObjective && nextLesson) {
     nextLessonObjective.textContent = nextLesson.objective;
   }
+  const titleCard = document.getElementById("nextLessonTitleCard");
+const objectiveCard = document.getElementById("nextLessonObjectiveCard");
+
+if (nextLesson && titleCard && objectiveCard) {
+  titleCard.textContent =
+    `${nextLesson.unit}: ${nextLesson.title}`;
+
+  objectiveCard.textContent =
+    nextLesson.objective;
+}
 
   const activityTitle = document.getElementById("activityTitle");
   const activityText = document.getElementById("activityText");
@@ -1136,6 +1146,12 @@ function renderCertificate() {
 
   const today = new Date().toLocaleDateString();
   certificateDate.textContent = "Date: " + today;
+  const certificateId = document.getElementById("certificateId");
+
+if (certificateId) {
+  certificateId.textContent =
+    "ESA-A0-" + Date.now().toString().slice(-6);
+}
 }
 
 function downloadCertificate() {
