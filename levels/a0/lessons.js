@@ -368,24 +368,180 @@ Nice to meet you.
     module: "Module 1: Communication Basics",
     unit: "Unit 2",
     title: "Introducing Yourself",
-    objective: "Learn how to introduce yourself in English.",
+    objective: `
+By the end of this lesson, you will be able to:
+
+• Introduce yourself confidently.
+• Say your name correctly.
+• Say your age.
+• Say where you are from.
+• Say your nationality.
+• Say your occupation.
+• Have a simple self-introduction conversation.
+`,
+theory: `
+Introducing yourself is one of the first communication skills in English.
+
+When meeting someone for the first time, people usually share basic personal information.
+
+A simple introduction normally includes:
+
+• Your name
+• Your age
+• Your country
+• Your nationality
+• Your occupation
+
+Example:
+
+Hello.
+
+My name is Anna.
+
+I am twenty years old.
+
+I am from Canada.
+
+I am Canadian.
+
+I am a student.
+
+Nice to meet you.
+
+This structure is used in schools, universities, workplaces and everyday conversations.
+`,
 
     words: [
       "Name", "Student", "Teacher", "Friend",
       "Nice", "Meet", "You", "I am", "My name is", "English"
     ],
+    vocabularyDetails: [
+  {
+    english: "Name",
+    spanish: "Nombre",
+    pronunciation: "neim",
+    example: "My name is Anna."
+  },
+  {
+    english: "Student",
+    spanish: "Estudiante",
+    pronunciation: "stiú-dent",
+    example: "I am a student."
+  },
+  {
+    english: "Teacher",
+    spanish: "Profesor / profesora",
+    pronunciation: "tí-cher",
+    example: "My teacher is nice."
+  },
+  {
+    english: "Friend",
+    spanish: "Amigo / amiga",
+    pronunciation: "frend",
+    example: "Tom is my friend."
+  },
+  {
+    english: "Age",
+    spanish: "Edad",
+    pronunciation: "eich",
+    example: "I am twenty years old."
+  },
+  {
+    english: "Country",
+    spanish: "País",
+    pronunciation: "kán-tri",
+    example: "Peru is my country."
+  },
+  {
+    english: "Nationality",
+    spanish: "Nacionalidad",
+    pronunciation: "na-sho-ná-li-ti",
+    example: "My nationality is Peruvian."
+  },
+  {
+    english: "Occupation",
+    spanish: "Ocupación",
+    pronunciation: "o-kiu-péi-shon",
+    example: "My occupation is student."
+  },
+  {
+    english: "I am",
+    spanish: "Yo soy / Yo estoy",
+    pronunciation: "ai am",
+    example: "I am Peruvian."
+  },
+  {
+    english: "My name is",
+    spanish: "Mi nombre es",
+    pronunciation: "mai neim is",
+    example: "My name is Anna."
+  }
+],
 
     phrase: "My name is Dany. I am a student.",
     question: "What does 'My name is' mean?",
     options: ["Mi nombre es", "Yo tengo", "Adiós"],
     answer: "Mi nombre es",
+  grammarExplanation: `
+In this lesson, we use the verb "to be" to give personal information.
+
+Use "I am" when you talk about yourself.
+
+Examples:
+I am Anna.
+I am twenty years old.
+I am from Peru.
+I am Peruvian.
+I am a student.
+
+Use "My name is" to say your name.
+
+Example:
+My name is Anna.
+
+Do not say:
+My name Anna.
+
+Correct:
+My name is Anna.
+
+Use "I am from" to say your country.
+
+Example:
+I am from Peru.
+
+Use nationality words to say where you belong culturally or nationally.
+
+Example:
+I am Peruvian.
+I am Canadian.
+I am French.
+`,
 
     grammar: [
-      "My name is...",
-      "I am...",
-      "I am a student.",
-      "Nice to meet you."
-    ],
+  "My name is Anna.",
+  "I am Anna.",
+  "I am twenty years old.",
+  "I am from Peru.",
+  "I am Peruvian.",
+  "I am a student.",
+  "What is your name?",
+  "Where are you from?",
+  "How old are you?",
+  "Nice to meet you."
+],
+dialogue: [
+  "A: Hello. What is your name?",
+  "B: My name is Anna.",
+  "A: Nice to meet you, Anna.",
+  "B: Nice to meet you too.",
+  "A: How old are you?",
+  "B: I am twenty years old.",
+  "A: Where are you from?",
+  "B: I am from Canada.",
+  "A: What is your nationality?",
+  "B: I am Canadian."
+],
 
     speaking: [
       "My name is Dany.",
@@ -395,7 +551,69 @@ Nice to meet you.
       "What is your name?"
     ],
 
-    reading: "Hello. My name is Anna. I am a student. Nice to meet you.",
+    reading: `
+Hello.
+
+My name is Emma.
+
+I am twenty years old.
+
+I am from Australia.
+
+I am Australian.
+
+I live in Sydney.
+
+I am a university student.
+
+I study English every day.
+
+I enjoy meeting new people.
+
+Nice to meet you.
+`,
+readingTranslation: [
+  {
+    english: "Hello.",
+    spanish: "Hola."
+  },
+  {
+    english: "My name is Emma.",
+    spanish: "Mi nombre es Emma."
+  },
+  {
+    english: "I am twenty years old.",
+    spanish: "Tengo veinte años."
+  },
+  {
+    english: "I am from Australia.",
+    spanish: "Soy de Australia."
+  },
+  {
+    english: "I am Australian.",
+    spanish: "Soy australiana."
+  },
+  {
+    english: "I live in Sydney.",
+    spanish: "Vivo en Sídney."
+  },
+  {
+    english: "I am a university student.",
+    spanish: "Soy estudiante universitario."
+  },
+  {
+    english: "I study English every day.",
+    spanish: "Estudio inglés todos los días."
+  },
+  {
+    english: "I enjoy meeting new people.",
+    spanish: "Disfruto conocer gente nueva."
+  },
+  {
+    english: "Nice to meet you.",
+    spanish: "Mucho gusto."
+  }
+],
 
     writing: "Complete: My _____ is Dany.",
     writingAnswer: "name"

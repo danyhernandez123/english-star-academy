@@ -441,7 +441,8 @@ function renderLessonStep() {
     return {
       english: parts[0].trim(),
       spanish: parts[1] ? parts[1].trim() : "",
-      pronunciation: ""
+      pronunciation: "",
+      example: ""
     };
   });
 
@@ -463,11 +464,44 @@ function renderLessonStep() {
                 : ""
             }
 
-            <button
-              class="mini-audio-btn"
-              onclick="speak('${item.english}')">
-              Listen
-            </button>
+            ${
+              item.example
+                ? `
+                  <div class="vocab-example">
+                    <span>Example</span>
+                    <p>${item.example}</p>
+
+                    <div class="audio-actions">
+  <button
+    class="mini-audio-btn"
+    onclick="speak('${item.example}')">
+    Listen example
+  </button>
+
+  <button
+    class="mini-audio-btn slow-btn"
+    onclick="speakSlow('${item.example}')">
+    Slow
+  </button>
+</div>
+                  </div>
+                `
+                : ""
+            }
+
+            <div class="audio-actions">
+  <button
+    class="mini-audio-btn"
+    onclick="speak('${item.english}')">
+    Listen word
+  </button>
+
+  <button
+    class="mini-audio-btn slow-btn"
+    onclick="speakSlow('${item.english}')">
+    Slow
+  </button>
+</div>
           </div>
         `).join("")}
       </div>
@@ -1013,6 +1047,12 @@ function speak(text) {
   const speech = new SpeechSynthesisUtterance(text);
   speech.lang = "en-US";
   speech.rate = 0.85;
+  speechSynthesis.speak(speech);
+}
+function speakSlow(text) {
+  const speech = new SpeechSynthesisUtterance(text);
+  speech.lang = "en-US";
+  speech.rate = 0.6;
   speechSynthesis.speak(speech);
 }
 
